@@ -6,5 +6,6 @@
     parted
     nixfmt
     nixfmt-tree
+    cachix
   ];
 }
