@@ -1,7 +1,9 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
+    inputs.home-manager.nixosModules.home-manager
+
     ./network.nix
     ./time.nix
     ./programs.nix
