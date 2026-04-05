@@ -41,6 +41,22 @@
         "type": "github"
       }
     },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1767039857,
+        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -157,7 +173,8 @@
         "disko": "disko",
         "home-manager": "home-manager",
         "niri": "niri",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "yandex-browser": "yandex-browser"
       }
     },
     "systems": {
@@ -205,6 +222,27 @@
       "original": {
         "owner": "Supreeeme",
         "repo": "xwayland-satellite",
+        "type": "github"
+      }
+    },
+    "yandex-browser": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1775004424,
+        "narHash": "sha256-P6rPcGEtegUGDIFpnJAVNZuhJ49C+2pv2OunOSrFIp8=",
+        "owner": "miuirussia",
+        "repo": "yandex-browser.nix",
+        "rev": "c717343e64ab44a7dfaf967731928377a536fcba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "miuirussia",
+        "repo": "yandex-browser.nix",
         "type": "github"
       }
     }

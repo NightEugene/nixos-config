@@ -15,6 +15,9 @@
 
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
+
+    yandex-browser.url = "github:miuirussia/yandex-browser.nix";
+    yandex-browser.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: inputs.blueprint { inherit inputs; };
