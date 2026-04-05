@@ -15,6 +15,29 @@
         focus-ring = {
           width = 2;
         };
+
+        preset-column-widths = [
+          { proportion = 1.0 / 3.0; }
+          { proportion = 1.0 / 2.0; }
+          { proportion = 2.0 / 3.0; }
+        ];
+        default-column-width = {
+          proportion = 1.0 / 2.0;
+        };
+
+        always-center-single-column = true;
+      };
+
+      input = {
+        focus-follows-mouse.enable = true;
+        workspace-auto-back-and-forth = false;
+
+        keyboard = {
+          xkb = {
+            layout = "us,ru";
+            options = "grp:caps_toggle";
+          };
+        };
       };
 
       spawn-at-startup = [
