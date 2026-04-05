@@ -13,14 +13,17 @@
   ];
 
   system.stateVersion = "25.11";
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-  nix.settings.trusted-users = [
-    "root"
-    "nighteugene"
-  ];
+  nix.settings = {
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+
+    trusted-users = [
+      "root"
+      "@wheel"
+    ];
+  };
 
   environment.pathsToLink = [
     "/share/applications"
