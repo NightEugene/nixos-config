@@ -14,6 +14,7 @@
     packages = with pkgs; [
       noctalia-shell
       fastfetch
+      brightnessctl
     ];
   };
 }
