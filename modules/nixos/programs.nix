@@ -6,4 +6,5 @@
   programs.pmount.enable = true;
   programs.vim.enable = true;
   programs.nm-applet.enable = true;
+  programs.evince.enable = true;
 }
