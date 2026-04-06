@@ -7,5 +7,6 @@
     nixfmt
     nixfmt-tree
     cachix
+    telegram-desktop
   ];
 }
