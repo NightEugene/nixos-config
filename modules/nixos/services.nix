@@ -3,6 +3,7 @@
 {
   services.libinput.enable = true;
   services.openssh.enable = true;
+  services.upower.enable = true;
 
   services.greetd = {
     enable = true;
