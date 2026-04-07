@@ -8,5 +8,6 @@
     nixfmt-tree
     cachix
     telegram-desktop
+    openvpn
   ];
 }
