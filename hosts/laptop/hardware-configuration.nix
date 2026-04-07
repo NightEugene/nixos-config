@@ -31,4 +31,9 @@
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="intel_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/backlight/%k/brightness"
   '';
+
+  # power management
+  powerManagement.enable = true;
+  powerManagement.powertop.enable = true;
+  services.auto-cpufreq.enable = true;
 }

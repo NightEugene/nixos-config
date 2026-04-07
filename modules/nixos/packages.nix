@@ -9,5 +9,6 @@
     cachix
     telegram-desktop
     openvpn
+    powertop
   ];
 }
