@@ -10,6 +10,7 @@
     ./packages.nix
     ./services.nix
     ./users.nix
+    ./virt.nix
   ];
 
   system.stateVersion = "25.11";

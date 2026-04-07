@@ -10,5 +10,6 @@
     telegram-desktop
     openvpn
     powertop
+    docker
   ];
 }
