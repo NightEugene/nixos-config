@@ -1,6 +1,8 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
+  users.defaultUserShell = pkgs.zsh;
+
   users.users.nighteugene = {
     isNormalUser = true;
     extraGroups = [
