@@ -11,5 +11,6 @@
     openvpn
     powertop
     docker
+    home-manager
   ];
 }
