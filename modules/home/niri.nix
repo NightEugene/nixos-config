@@ -1,5 +1,15 @@
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 
+let
+  noctalia =
+    cmd:
+    [
+      "noctalia-shell"
+      "ipc"
+      "call"
+    ]
+    ++ (pkgs.lib.splitString " " cmd);
+in
 {
   imports = [
     inputs.niri.homeModules.niri
@@ -10,11 +20,9 @@
 
     settings = {
       layout = {
-        gaps = 5;
+        gaps = 0;
 
-        focus-ring = {
-          width = 2;
-        };
+        focus-ring.enable = false;
 
         preset-column-widths = [
           { proportion = 1.0 / 3.0; }
@@ -44,25 +52,34 @@
         { argv = [ "noctalia-shell" ]; }
       ];
 
+      hotkey-overlay.skip-at-startup = true;
+
       binds = {
         "Mod+Return".action.spawn = "alacritty";
 
         "Mod+H".action.show-hotkey-overlay = [ ];
 
-        "Mod+Q".action.close-window = [ ];
+        "Mod+Q" = {
+          action.close-window = [ ];
+          repeat = false;
+        };
+        "Mod+O" = {
+          action.toggle-overview = [ ];
+          repeat = false;
+        };
         "Mod+F".action.maximize-column = [ ];
         "Mod+Shift+F".action.fullscreen-window = [ ];
 
-        "Mod+V".action.switch-focus-between-floating-and-tiling = [ ];
-        "Mod+Shift+V".action.toggle-window-floating = [ ];
+        "Mod+Space".action.switch-focus-between-floating-and-tiling = [ ];
+        "Mod+Shift+Space".action.toggle-window-floating = [ ];
 
         "Mod+R".action.switch-preset-column-width = [ ];
         "Mod+C".action.center-column = [ ];
+        "Mod+V".action.toggle-column-tabbed-display = [ ];
         "Mod+Minus".action.set-column-width = "-10%";
         "Mod+Equal".action.set-column-width = "+10%";
         "Mod+Shift+Minus".action.set-window-height = "-10%";
         "Mod+Shift+Equal".action.set-window-height = "+10%";
-        "Mod+Space".action.toggle-column-tabbed-display = [ ];
 
         "Mod+Left".action.focus-column-left = [ ];
         "Mod+Right".action.focus-column-right = [ ];
@@ -74,16 +91,12 @@
         "Mod+Shift+Up".action.move-window-up = [ ];
         "Mod+Shift+Down".action.move-window-down = [ ];
 
-        "Mod+D".action.spawn-sh = "noctalia-shell ipc call launcher toggle";
-        "Mod+L".action.spawn = "swaylock";
+        "Mod+D".action.spawn = noctalia "launcher toggle";
+        "Mod+P".action.spawn = noctalia "sessionMenu toggle";
 
-        "Mod+Shift+S".action.screenshot = [ ];
+        "Mod+Print".action.screenshot = [ ];
         "Print".action.screenshot-screen = [ ];
-        "Mod+Print".action.screenshot-window = [ ];
-
-        #"Mod+Insert".action.set-dynamic-cast-window = [ ];
-        #"Mod+Shift+Insert".action.set-dynamic-cast-monitor = [ ];
-        #"Mod+Delete".action.clear-dynamic-cast-target = [ ];
+        "Alt+Print".action.screenshot-window = [ ];
 
         "Mod+Tab".action.focus-window-down-or-column-right = [ ];
         "Mod+Shift+Tab".action.focus-window-up-or-column-left = [ ];
