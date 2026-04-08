@@ -15,6 +15,7 @@
       noctalia-shell
       fastfetch
       brightnessctl
+      xwayland-satellite
     ];
   };
 }
