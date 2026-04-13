@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, lib, pkgs, ... }:
 
 {
   imports = [
@@ -45,5 +45,9 @@
   environment.pathsToLink = [
     "/share/applications"
     "/share/xdg-desktop-portal"
+  ];
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
   ];
 }
