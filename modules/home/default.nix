@@ -8,6 +8,11 @@
 
   programs.alacritty.enable = true;
   programs.swaylock.enable = true;
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+  };
 
   home = {
     stateVersion = "25.11";
