@@ -12,5 +12,6 @@
     powertop
     docker
     home-manager
+    mattermost-desktop
   ];
 }
