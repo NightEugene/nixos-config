@@ -13,5 +13,7 @@
     docker
     home-manager
     mattermost-desktop
+    gcc
+    gdb
   ];
 }
