@@ -3,10 +3,9 @@
 {
   imports = [
     ./shell.nix
+    ./term.nix
     ./niri.nix
   ];
-
-  programs.alacritty.enable = true;
 
   programs.neovim = {
     enable = true;
