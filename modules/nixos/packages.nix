@@ -15,5 +15,6 @@
     mattermost-desktop
     gcc
     gdb
+    gnumake
   ];
 }
