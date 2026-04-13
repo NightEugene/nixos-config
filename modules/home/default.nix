@@ -7,7 +7,7 @@
   ];
 
   programs.alacritty.enable = true;
-  programs.swaylock.enable = true;
+
   programs.neovim = {
     enable = true;
     viAlias = true;
