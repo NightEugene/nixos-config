@@ -16,5 +16,6 @@
     gcc
     gdb
     gnumake
+    eog
   ];
 }
