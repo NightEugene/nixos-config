@@ -18,6 +18,9 @@
 
     yandex-browser.url = "github:miuirussia/yandex-browser.nix";
     yandex-browser.inputs.nixpkgs.follows = "nixpkgs";
+
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: inputs.blueprint { inherit inputs; };

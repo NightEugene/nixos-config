@@ -5,6 +5,7 @@
     ./shell.nix
     ./term.nix
     ./niri.nix
+    ./noctalia.nix
   ];
 
   programs.neovim = {
@@ -17,7 +18,6 @@
     stateVersion = "25.11";
 
     packages = with pkgs; [
-      noctalia-shell
       fastfetch
       brightnessctl
       xwayland-satellite
