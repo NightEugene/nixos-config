@@ -18,6 +18,7 @@
     history = {
       size = 10000;
       ignoreAllDups = true;
+      share = false;
       path = "$HOME/.zsh_history";
     };
   };
