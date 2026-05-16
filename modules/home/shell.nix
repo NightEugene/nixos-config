@@ -24,6 +24,7 @@
 
   programs.zsh.oh-my-zsh = {
     enable = true;
-    theme = "jispwoso";
+    theme = "nighteugene";
+    custom = "$HOME/git/nighteugene/zsh-config";
   };
 }
