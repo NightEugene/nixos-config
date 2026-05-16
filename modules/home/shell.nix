@@ -10,7 +10,7 @@
       styles = {
         autodirectory = "fg=green";
         suffix-alias = "fg=green";
-        path = "none";
+        path = "fg=cyan";
         precommand = "fg=green";
       };
     };
