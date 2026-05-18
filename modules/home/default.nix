@@ -1,17 +1,12 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
   imports = [
-    inputs.nix4nvchad.homeManagerModules.default
-
     ./shell
     ./term.nix
     ./niri.nix
     ./noctalia.nix
+    ./vim.nix
   ];
-
-  programs.nvchad = {
-    enable = true;
-  };
 
   home = {
     stateVersion = "25.11";
@@ -23,7 +18,6 @@
       just
       nh
       tree
-      ripgrep
     ];
   };
 }
