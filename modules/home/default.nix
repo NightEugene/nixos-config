@@ -21,6 +21,7 @@
       fastfetch
       brightnessctl
       xwayland-satellite
+      just
     ];
   };
 }
