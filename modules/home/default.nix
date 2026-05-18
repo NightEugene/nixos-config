@@ -24,6 +24,7 @@
       just
       nh
       tree
+      ripgrep
     ];
   };
 }
