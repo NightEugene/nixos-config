@@ -18,6 +18,11 @@ in
     enable = true;
     autosuggestion.enable = true;
 
+    shellAliases = {
+      vi = "nvim";
+      vim = "nvim";
+    };
+
     syntaxHighlighting = {
       enable = true;
       styles = {
