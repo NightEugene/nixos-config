@@ -21,11 +21,11 @@
       share = false;
       path = "$HOME/.zsh_history";
     };
-  };
 
-  programs.zsh.oh-my-zsh = {
-    enable = true;
-    theme = "nighteugene";
-    custom = "$HOME/git/nighteugene/zsh-config";
+    oh-my-zsh = {
+      enable = true;
+      theme = "nighteugene";
+      custom = "$HOME/git/nighteugene/zsh-config";
+    };
   };
 }
