@@ -23,6 +23,7 @@
       xwayland-satellite
       just
       nh
+      tree
     ];
   };
 }
