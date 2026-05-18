@@ -8,6 +8,8 @@
   programs.nvchad = {
     enable = true;
 
+    backup = false;
+
     chadrcConfig = ''
       local M = {}
       M.ui = {
