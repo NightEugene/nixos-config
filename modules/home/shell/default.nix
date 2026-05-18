@@ -1,5 +1,12 @@
-{ config, ... }:
+{ config, lib, ... }:
 
+let
+  zshCustomTheme = {
+    name = "nighteugene-theme";
+    src = lib.cleanSource ./zsh;
+    file = "nighteugene.zsh-theme";
+  };
+in
 {
   programs.zsh = {
     enable = true;
@@ -24,8 +31,14 @@
 
     oh-my-zsh = {
       enable = true;
-      theme = "nighteugene";
-      custom = "$HOME/git/nighteugene/zsh-config";
     };
+
+    plugins = [
+      zshCustomTheme
+    ];
+
+    initContent = ''
+      source ${zshCustomTheme.src}/${zshCustomTheme.file}
+    '';
   };
 }
