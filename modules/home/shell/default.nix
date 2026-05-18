@@ -6,6 +6,12 @@ let
     src = lib.cleanSource ./zsh;
     file = "nighteugene.zsh-theme";
   };
+
+  zshJustfilePlugin = {
+    name = "zsh-justfile";
+    src = lib.cleanSource ./zsh;
+    file = "zsh-justfile.plugin.zsh";
+  };
 in
 {
   programs.zsh = {
@@ -35,6 +41,7 @@ in
 
     plugins = [
       zshCustomTheme
+      zshJustfilePlugin
     ];
 
     initContent = ''
