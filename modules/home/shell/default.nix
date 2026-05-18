@@ -43,9 +43,5 @@ in
       zshCustomTheme
       zshJustfilePlugin
     ];
-
-    initContent = ''
-      source ${zshCustomTheme.src}/${zshCustomTheme.file}
-    '';
   };
 }
