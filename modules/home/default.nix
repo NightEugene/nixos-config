@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./shell.nix
+    ./shell
     ./term.nix
     ./niri.nix
     ./noctalia.nix
