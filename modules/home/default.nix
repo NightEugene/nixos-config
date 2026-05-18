@@ -1,17 +1,16 @@
-{ pkgs, ... }:
-
+{ inputs, pkgs, ... }:
 {
   imports = [
+    inputs.nix4nvchad.homeManagerModules.default
+
     ./shell
     ./term.nix
     ./niri.nix
     ./noctalia.nix
   ];
 
-  programs.neovim = {
+  programs.nvchad = {
     enable = true;
-    viAlias = true;
-    vimAlias = true;
   };
 
   home = {
