@@ -51,7 +51,6 @@
 
     happ-nixos.url = "github:MrShitFox/happ-nixos";
     happ-nixos.flake = false;
-    happ-nixos.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: inputs.blueprint { inherit inputs; };
