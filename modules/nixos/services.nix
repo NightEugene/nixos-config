@@ -1,6 +1,10 @@
-{ config, ... }:
+{ inputs, config, ... }:
 
 {
+  imports = [
+    (import "${inputs.happ-nixos}/happ-module.nix")
+  ];
+
   services.libinput.enable = true;
   services.openssh.enable = true;
   services.upower.enable = true;
@@ -14,4 +18,6 @@
       };
     };
   };
+
+  services.happ.enable = true;
 }

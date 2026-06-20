@@ -47,6 +47,10 @@
 
     nix4nvchad.url = "github:nix-community/nix4nvchad";
     nix4nvchad.inputs.nixpkgs.follows = "nixpkgs";
+
+    happ-nixos.url = "github:MrShitFox/happ-nixos";
+    happ-nixos.flake = false;
+    happ-nixos.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs: inputs.blueprint { inherit inputs; };
