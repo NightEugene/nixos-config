@@ -75,6 +75,22 @@
         "type": "github"
       }
     },
+    "happ-nixos": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780336022,
+        "narHash": "sha256-okDznbkkdlQXLQCjrjpi49EHXUHCZnJtByrt91edrUg=",
+        "owner": "MrShitFox",
+        "repo": "happ-nixos",
+        "rev": "7affb5e4f88d78ae6aa0c7024a28dc5e805ce719",
+        "type": "github"
+      },
+      "original": {
+        "owner": "MrShitFox",
+        "repo": "happ-nixos",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -272,6 +288,7 @@
       "inputs": {
         "blueprint": "blueprint",
         "disko": "disko",
+        "happ-nixos": "happ-nixos",
         "home-manager": "home-manager",
         "niri": "niri",
         "nix4nvchad": "nix4nvchad",
