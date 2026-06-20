@@ -3,6 +3,7 @@
 
   nixConfig = {
     substituters = [
+      "https://mirror.yandex.ru/nixos"
       "https://cache.nixos.org"
       "https://numtide.cachix.org"
       "https://nix-community.cachix.org"
