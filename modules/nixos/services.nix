@@ -6,8 +6,15 @@
   ];
 
   services.libinput.enable = true;
-  services.openssh.enable = true;
   services.upower.enable = true;
+
+  services.openssh = {
+    enable = true;
+    settings = {
+      PermitRootLogin = "no";
+      PasswordAuthentication = false;
+    };
+  };
 
   services.greetd = {
     enable = true;
