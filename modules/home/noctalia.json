@@ -587,7 +587,7 @@
         "excludedApps": "discord,firefox,chrome,chromium,edge"
       },
       "enableMediaToast": false,
-      "enableKeyboardLayoutToast": true,
+      "enableKeyboardLayoutToast": false,
       "enableBatteryToast": true
     },
     "osd": {
