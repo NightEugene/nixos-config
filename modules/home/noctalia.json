@@ -177,6 +177,14 @@
             "showPowerProfiles": false
           },
           {
+            "displayMode": "forceOpen",
+            "iconColor": "none",
+            "id": "KeyboardLayout",
+            "showIcon": false,
+            "showLabel": true,
+            "textColor": "none"
+          },
+          {
             "colorizeDistroLogo": false,
             "colorizeSystemIcon": "none",
             "customIconPath": "",
