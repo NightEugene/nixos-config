@@ -24,6 +24,7 @@
       nh
       tree
       opencode
+      clang
       inputs."kimi-cli".packages.${pkgs.stdenv.hostPlatform.system}.kimi-cli
     ];
   };
