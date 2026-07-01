@@ -5,6 +5,7 @@
     ./term.nix
     ./niri.nix
     ./max.nix
+    ./yandex-browser.nix
     ./noctalia.nix
     ./vim.nix
   ];
