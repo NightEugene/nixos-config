@@ -18,6 +18,7 @@
       just
       nh
       tree
+      opencode
     ];
   };
 }
