@@ -22,6 +22,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  home-manager.useGlobalPkgs = true;
+
   nix.settings = {
     experimental-features = [
       "nix-command"
