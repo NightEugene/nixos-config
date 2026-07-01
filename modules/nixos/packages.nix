@@ -8,10 +8,6 @@
     nixfmt-tree
     cachix
     telegram-desktop
-    openvpn
-    powertop
-    docker
-    home-manager
     mattermost-desktop
     gcc
     gdb
