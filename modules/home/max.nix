@@ -98,6 +98,9 @@ let
 
     extraInstallCommands = ''
       install -Dm644 ${max-unwrapped}/share/applications/max.desktop $out/share/applications/max.desktop
+      sed -i 's|Exec=/usr/share/max/bin/max|Exec=max|' $out/share/applications/max.desktop
+      sed -i 's|Icon=/usr/share/pixmaps/max.png|Icon=max|' $out/share/applications/max.desktop
+      sed -i '/DBusActivatable=true/d' $out/share/applications/max.desktop
       install -Dm644 ${max-unwrapped}/share/icons/hicolor/512x512/apps/max.png $out/share/icons/hicolor/512x512/apps/max.png
     '';
 
