@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./shell
@@ -24,6 +24,7 @@
       nh
       tree
       opencode
+      inputs."kimi-cli".packages.${pkgs.stdenv.hostPlatform.system}.kimi-cli
     ];
   };
 }
