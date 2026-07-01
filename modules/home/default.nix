@@ -4,6 +4,7 @@
     ./shell
     ./term.nix
     ./niri.nix
+    ./max.nix
     ./noctalia.nix
     ./vim.nix
   ];
