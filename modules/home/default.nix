@@ -6,6 +6,7 @@
     ./niri.nix
     ./max.nix
     ./yandex-browser.nix
+    ./aurora-sdk.nix
     ./noctalia.nix
     ./vim.nix
   ];
