@@ -48,5 +48,18 @@ in
       zshCustomTheme
       zshJustfilePlugin
     ];
+
+    initExtra = ''
+      # Launch kimi in the NixOS config directory and load SESSION.md context
+      nixos-kimi() {
+        local config_dir="/home/nighteugene/git/nighteugene/nixos-config"
+        if [ ! -d "$config_dir" ]; then
+          echo "nixos-kimi: directory $config_dir not found" >&2
+          return 1
+        fi
+        cd "$config_dir" || return 1
+        exec kimi "$@"
+      }
+    '';
   };
 }
