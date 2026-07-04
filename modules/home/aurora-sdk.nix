@@ -176,11 +176,19 @@ let
     dontFixup = true;
     dontStrip = true;
 
+    nativeBuildInputs = [ pkgs.librsvg ];
+
     installPhase = ''
       mkdir -p $out/bin $out/share/applications $out/share/icons/hicolor/scalable/apps
 
       install -Dm755 ${launcher} $out/bin/aurora-sdk
       install -Dm644 ${./aurora-sdk-icon.svg} $out/share/icons/hicolor/scalable/apps/aurora-sdk.svg
+
+      for size in 48 64 128 256 512; do
+        mkdir -p $out/share/icons/hicolor/''${size}x''${size}/apps
+        rsvg-convert -w $size -h $size ${./aurora-sdk-icon.svg} \
+          -o $out/share/icons/hicolor/''${size}x''${size}/apps/aurora-sdk.png
+      done
 
       cat > $out/share/applications/aurora-sdk.desktop <<EOF
 [Desktop Entry]
