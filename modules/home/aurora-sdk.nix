@@ -33,7 +33,12 @@ let
   };
 
   installScript = pkgs.writeText "aurora-install.qs" ''
-    function Controller() {}
+    function Controller() {
+      var ws = installer.value("workspaceDir");
+      if (!ws || ws === "") {
+        installer.setValue("workspaceDir", installer.value("TargetDir") + "/workspace");
+      }
+    }
 
     Controller.prototype.WelcomePageCallback = function() {
       gui.clickButton(buttons.NextButton);
@@ -130,6 +135,11 @@ let
   aurora-sdk-fhs = pkgs.buildFHSEnv {
     name = "aurora-sdk-fhs";
 
+    extraBwrapArgs = [
+      "--bind-try /run/docker.sock /run/docker.sock"
+      "--bind-try /var/run/docker.sock /var/run/docker.sock"
+    ];
+
     targetPkgs = pkgs: with pkgs; [
       gcc.cc.lib
       libgcc
@@ -191,6 +201,8 @@ let
       libSM
       libICE
       libgcrypt
+
+      docker
     ];
 
     runScript = "${aurora-sdk-runner}/bin/aurora-sdk-runner";
