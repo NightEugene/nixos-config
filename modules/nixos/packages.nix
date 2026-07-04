@@ -7,11 +7,8 @@
     nixfmt
     nixfmt-tree
     cachix
-    telegram-desktop
-    mattermost-desktop
     gcc
     gdb
     gnumake
-    eog
   ];
 }

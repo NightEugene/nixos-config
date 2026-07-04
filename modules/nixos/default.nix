@@ -24,6 +24,22 @@
 
   home-manager.useGlobalPkgs = true;
 
+  boot.tmp.useTmpfs = true;
+
+  hardware.graphics.extraPackages = with pkgs; [
+    intel-media-driver
+    intel-vaapi-driver
+  ];
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-wlr
+    ];
+    config.common.default = "*";
+  };
+
   nix.settings = {
     experimental-features = [
       "nix-command"
