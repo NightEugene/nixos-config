@@ -177,9 +177,10 @@ let
     dontStrip = true;
 
     installPhase = ''
-      mkdir -p $out/bin $out/share/applications
+      mkdir -p $out/bin $out/share/applications $out/share/icons/hicolor/scalable/apps
 
       install -Dm755 ${launcher} $out/bin/aurora-sdk
+      install -Dm644 ${./aurora-sdk-icon.svg} $out/share/icons/hicolor/scalable/apps/aurora-sdk.svg
 
       cat > $out/share/applications/aurora-sdk.desktop <<EOF
 [Desktop Entry]
