@@ -151,9 +151,9 @@ in
         "Mod+9".action.focus-workspace = 9;
         "Mod+0".action.focus-workspace = 0;
 
-        "Mod+Shift+1".action.move-column-to-workspace = 1;
-        "Mod+Shift+2".action.move-column-to-workspace = 2;
-        "Mod+Shift+3".action.move-column-to-workspace = 3;
+        "Mod+Shift+1".action.move-column-to-workspace = "kimi";
+        "Mod+Shift+2".action.move-column-to-workspace = "www";
+        "Mod+Shift+3".action.move-column-to-workspace = "msg";
         "Mod+Shift+4".action.move-column-to-workspace = 4;
         "Mod+Shift+5".action.move-column-to-workspace = 5;
         "Mod+Shift+6".action.move-column-to-workspace = 6;
