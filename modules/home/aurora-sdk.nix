@@ -155,6 +155,14 @@ let
 
       brotli.lib
       docker
+
+      # GStreamer libraries required by the EmulationManagement plugin
+      gst_all_1.gstreamer
+      gst_all_1.gst-plugins-base
+      gst_all_1.gst-plugins-good
+      gst_all_1.gst-plugins-bad
+      gst_all_1.gst-plugins-ugly
+      gst_all_1.gst-libav
     ];
 
     runScript = "${aurora-sdk-runner}/bin/aurora-sdk-runner";
