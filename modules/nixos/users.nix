@@ -11,6 +11,7 @@
       "docker"
       "input"
       "kvm"
+      "libvirtd"
       "networkmanager"
       "plugdev"
       "wheel"

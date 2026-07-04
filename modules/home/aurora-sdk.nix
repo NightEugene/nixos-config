@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 let
+  fhsCommon = import ./fhs-common.nix { inherit pkgs; };
+
   version = "5.2.1.200";
   installerName = "AuroraSDK-${version}-BT-release-linux-64-offline-26.06.17-08.08.07.run";
 
@@ -91,79 +93,21 @@ let
       "--bind-try /var/run/docker.sock /var/run/docker.sock"
     ];
 
-    targetPkgs = pkgs: with pkgs; [
-      gcc.cc.lib
-      libgcc
-      glibc
-      zlib
-      expat
-      dbus
-      fontconfig
-      freetype
-      libglvnd
-      libpulseaudio
-      alsa-lib
-      pipewire
-      openssl
-      nss
-      nspr
-      cups
-      libgbm
-      libdrm
-      mesa
+    targetPkgs = pkgs:
+      fhsCommon
+      ++ (with pkgs; [
+        harfbuzz
+        brotli.lib
+        docker
 
-      libX11
-      libXcomposite
-      libXdamage
-      libXext
-      libXfixes
-      libXi
-      libXinerama
-      libXcursor
-      libXrender
-      libXScrnSaver
-      libXrandr
-      libXxf86vm
-      libxcb
-      xcbutil
-      xcbutilcursor
-      xcbutilimage
-      xcbutilkeysyms
-      xcbutilrenderutil
-      xcbutilwm
-      libxkbfile
-      libxshmfence
-
-      systemd
-      xdg-utils
-      libnotify
-      libappindicator-gtk3
-      gtk3
-      at-spi2-core
-      pango
-      cairo
-      gdk-pixbuf
-      glib
-      harfbuzz
-
-      libsecret
-      libxkbcommon
-      libXtst
-      libSM
-      libICE
-      libgcrypt
-
-      brotli.lib
-      docker
-
-      # GStreamer libraries required by the EmulationManagement plugin
-      gst_all_1.gstreamer
-      gst_all_1.gst-plugins-base
-      gst_all_1.gst-plugins-good
-      gst_all_1.gst-plugins-bad
-      gst_all_1.gst-plugins-ugly
-      gst_all_1.gst-libav
-    ];
+        # GStreamer libraries required by the EmulationManagement plugin
+        gst_all_1.gstreamer
+        gst_all_1.gst-plugins-base
+        gst_all_1.gst-plugins-good
+        gst_all_1.gst-plugins-bad
+        gst_all_1.gst-plugins-ugly
+        gst_all_1.gst-libav
+      ]);
 
     runScript = "${aurora-sdk-runner}/bin/aurora-sdk-runner";
   };

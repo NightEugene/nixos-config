@@ -29,6 +29,9 @@
       tree
       opencode
       clang
+      telegram-desktop
+      mattermost-desktop
+      eog
       inputs."kimi-cli".packages.${pkgs.stdenv.hostPlatform.system}.kimi-cli
     ];
   };

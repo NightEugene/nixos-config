@@ -7,6 +7,11 @@
 
   services.libinput.enable = true;
   services.upower.enable = true;
+  # power-profiles-daemon conflicts with services.auto-cpufreq (enabled in hardware-configuration.nix)
+  services.thermald.enable = true;
+  services.fstrim.enable = true;
+
+  security.rtkit.enable = true;
 
   services.openssh = {
     enable = true;

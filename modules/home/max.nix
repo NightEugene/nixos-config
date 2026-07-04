@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 let
+  fhsCommon = import ./fhs-common.nix { inherit pkgs; };
+
   max-unwrapped = pkgs.stdenvNoCC.mkDerivation {
     pname = "max-unwrapped";
     version = "26.21.0.73284";
@@ -30,69 +32,17 @@ let
   max = pkgs.buildFHSEnv {
     name = "max";
 
-    targetPkgs = pkgs: with pkgs; [
+    targetPkgs = pkgs: [
       max-unwrapped
-
-      glibc
-      libgcc
-      gcc.cc.lib
-      zlib
-      expat
-      dbus
-      fontconfig
-      freetype
-      libglvnd
-      libpulseaudio
-      alsa-lib
-      pipewire
-      openssl
-      nss
-      nspr
-      cups
-      libgbm
-      libdrm
-      mesa
-
-      libX11
-      libXcomposite
-      libXdamage
-      libXext
-      libXfixes
-      libXrandr
-      libxcb
-      xcbutil
-      xcbutilcursor
-      xcbutilimage
-      xcbutilkeysyms
-      xcbutilrenderutil
-      xcbutilwm
-      libxkbfile
-      libxshmfence
-
-      systemd
-      xdg-utils
-      libnotify
-      libappindicator-gtk3
-      gtk3
-      at-spi2-core
-      pango
-      cairo
-      gdk-pixbuf
-      glib
-
+    ]
+    ++ fhsCommon
+    ++ (with pkgs; [
       qt6.qtbase
       qt6.qtdeclarative
       qt6.qtwebengine
       qt6.qtmultimedia
       qt6.qtwayland
-
-      libsecret
-      libxkbcommon
-      libXtst
-      libSM
-      libICE
-      libgcrypt
-    ];
+    ]);
 
     runScript = "${max-unwrapped}/bin/max";
 
