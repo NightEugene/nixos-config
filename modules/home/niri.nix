@@ -36,6 +36,33 @@ in
         always-center-single-column = true;
       };
 
+      workspaces = {
+        "01-kimi" = {
+          name = "kimi";
+        };
+        "02-www" = {
+          name = "www";
+        };
+        "03-msg" = {
+          name = "msg";
+        };
+      };
+
+      window-rules = [
+        {
+          matches = [ { app-id = "^yandex-browser(-stable)?$"; } ];
+          open-on-workspace = "www";
+        }
+        {
+          matches = [ { app-id = "^(telegramdesktop|org\\.telegram\\.desktop)$"; } ];
+          open-on-workspace = "msg";
+        }
+        {
+          matches = [ { app-id = "^max$"; } ];
+          open-on-workspace = "msg";
+        }
+      ];
+
       input = {
         focus-follows-mouse.enable = true;
         workspace-auto-back-and-forth = false;
@@ -113,9 +140,9 @@ in
         "XF86MonBrightnessUp".action.spawn-sh = "brightnessctl set 10%+";
         "XF86MonBrightnessDown".action.spawn-sh = "brightnessctl set 10%-";
 
-        "Mod+1".action.focus-workspace = 1;
-        "Mod+2".action.focus-workspace = 2;
-        "Mod+3".action.focus-workspace = 3;
+        "Mod+1".action.focus-workspace = "kimi";
+        "Mod+2".action.focus-workspace = "www";
+        "Mod+3".action.focus-workspace = "msg";
         "Mod+4".action.focus-workspace = 4;
         "Mod+5".action.focus-workspace = 5;
         "Mod+6".action.focus-workspace = 6;
