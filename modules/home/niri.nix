@@ -77,6 +77,9 @@ in
 
       spawn-at-startup = [
         { argv = [ "noctalia-shell" ]; }
+        { argv = [ "telegram-desktop" ]; }
+        { argv = [ "max" ]; }
+        { argv = [ "yandex-browser" ]; }
       ];
 
       hotkey-overlay.skip-at-startup = true;
