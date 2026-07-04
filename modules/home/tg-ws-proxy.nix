@@ -71,6 +71,20 @@ in
         tg-ws-proxy also reads standard HTTPS_PROXY/ALL_PROXY/NO_PROXY variables.
       '';
     };
+
+    secret = lib.mkOption {
+      type = lib.types.nullOr lib.types.str;
+      default = null;
+      example = "dd0123456789abcdef0123456789abcdef";
+      description = ''
+        Static MTProto secret used by tg-ws-proxy.
+        Must be 32 hex characters (with an optional <literal>dd</literal>/<literal>ee</literal> prefix).
+        If unset, tg-ws-proxy generates a random secret on every start.
+
+        Warning: the value is embedded into the Nix store and world-readable there.
+        Do not use this option for highly sensitive deployments.
+      '';
+    };
   };
 
   config = lib.mkMerge [
@@ -95,7 +109,11 @@ in
 
         Service = {
           Type = "simple";
-          ExecStart = lib.escapeShellArgs ([ "${cfg.package}/bin/tg-ws-proxy" ] ++ cfg.extraArgs);
+          ExecStart = lib.escapeShellArgs (
+            [ "${cfg.package}/bin/tg-ws-proxy" ]
+            ++ lib.optionals (cfg.secret != null) [ "--secret" cfg.secret ]
+            ++ cfg.extraArgs
+          );
           Restart = "on-failure";
           RestartSec = "5";
           Environment = lib.optionals (cfg.extraEnvironment != { }) (
