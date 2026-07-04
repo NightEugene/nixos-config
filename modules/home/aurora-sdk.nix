@@ -17,7 +17,6 @@ let
       mkdir -p $out/share/aurora-sdk
       cp $src $out/share/aurora-sdk/${installerName}
       chmod +x $out/share/aurora-sdk/${installerName}
-      install -Dm644 ${installScript} $out/share/aurora-sdk/install.qs
     '';
 
     dontUnpack = true;
@@ -31,58 +30,6 @@ let
       platforms = [ "x86_64-linux" ];
     };
   };
-
-  installScript = pkgs.writeText "aurora-install.qs" ''
-    function Controller() {
-      var ws = installer.value("workspaceDir");
-      if (!ws || ws === "") {
-        installer.setValue("workspaceDir", installer.value("TargetDir") + "/workspace");
-      }
-    }
-
-    Controller.prototype.WelcomePageCallback = function() {
-      gui.clickButton(buttons.NextButton);
-    };
-
-    Controller.prototype.IntroductionPageCallback = function() {
-      gui.clickButton(buttons.NextButton);
-    };
-
-    Controller.prototype.TargetDirectoryPageCallback = function() {
-      gui.currentPageWidget().TargetDirectoryLineEdit.setText(installer.value("TargetDir"));
-      gui.clickButton(buttons.NextButton);
-    };
-
-    Controller.prototype.ComponentSelectionPageCallback = function() {
-      gui.clickButton(buttons.NextButton);
-    };
-
-    Controller.prototype.WorkspaceWidgetCallback = function() {
-      gui.currentPageWidget().workspaceLineEdit.setText(installer.value("workspaceDir"));
-      gui.clickButton(buttons.NextButton);
-    };
-
-    Controller.prototype.LicenseAgreementPageCallback = function() {
-      gui.currentPageWidget().AcceptLicenseRadioButton.setChecked(true);
-      gui.clickButton(buttons.NextButton);
-    };
-
-    Controller.prototype.StartMenuDirectoryPageCallback = function() {
-      gui.clickButton(buttons.NextButton);
-    };
-
-    Controller.prototype.ReadyForInstallationPageCallback = function() {
-      gui.clickButton(buttons.NextButton);
-    };
-
-    Controller.prototype.PerformInstallationPageCallback = function() {
-      gui.clickButton(buttons.NextButton);
-    };
-
-    Controller.prototype.FinishedPageCallback = function() {
-      gui.clickButton(buttons.FinishButton);
-    };
-  '';
 
   aurora-sdk-runner = pkgs.writeShellScriptBin "aurora-sdk-runner" ''
     if [ -z "''${AURORA_SDK_DIR:-}" ]; then
@@ -104,6 +51,9 @@ let
       fi
 
       echo "Installing Aurora SDK BT ${version} into $AURORA_SDK_DIR..."
+      if [ -d "$AURORA_SDK_DIR" ]; then
+        rm -rf "$AURORA_SDK_DIR"
+      fi
       mkdir -p "$AURORA_SDK_DIR" "''${AURORA_WORKSPACE_DIR:-$HOME/AuroraWorkspace}"
 
       export INSTALL_HOME="$AURORA_SDK_DIR/.install-home"
@@ -112,8 +62,9 @@ let
       export QT_QPA_PLATFORM=minimal
 
       ${aurora-sdk-unwrapped}/share/aurora-sdk/${installerName} \
-        --script ${aurora-sdk-unwrapped}/share/aurora-sdk/install.qs \
         --no-size-checking \
+        "non-interactive=true" \
+        "accept-licenses=true" \
         "TargetDir=$AURORA_SDK_DIR" \
         "workspaceDir=''${AURORA_WORKSPACE_DIR:-$HOME/AuroraWorkspace}"
 
@@ -202,6 +153,7 @@ let
       libICE
       libgcrypt
 
+      brotli.lib
       docker
     ];
 
