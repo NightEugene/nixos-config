@@ -12,8 +12,6 @@
     ./vim.nix
   ];
 
-  programs.tg-ws-proxy.secret = "99bfddf5454e8cf1ea0c927c167d848b";
-
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;

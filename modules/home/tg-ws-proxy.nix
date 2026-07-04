@@ -74,12 +74,12 @@ in
 
     secret = lib.mkOption {
       type = lib.types.nullOr lib.types.str;
-      default = null;
+      default = "99bfddf5454e8cf1ea0c927c167d848b";
       example = "dd0123456789abcdef0123456789abcdef";
       description = ''
         Static MTProto secret used by tg-ws-proxy.
         Must be 32 hex characters (with an optional <literal>dd</literal>/<literal>ee</literal> prefix).
-        If unset, tg-ws-proxy generates a random secret on every start.
+        The default value is a fixed secret so the generated <literal>tg://</literal> link stays the same across restarts.
 
         Warning: the value is embedded into the Nix store and world-readable there.
         Do not use this option for highly sensitive deployments.
