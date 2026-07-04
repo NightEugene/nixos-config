@@ -73,28 +73,40 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable {
-    home.packages = [ cfg.package ];
-
-    systemd.user.services.tg-ws-proxy = {
-      Unit = {
-        Description = "Telegram MTProto WebSocket Bridge Proxy";
-        After = [ "network.target" ];
+  config = lib.mkMerge [
+    {
+      programs.tg-ws-proxy = {
+        enable = lib.mkDefault true;
+        extraArgs = [
+          "--default-domains"
+          "--cf-priority"
+        ];
       };
+    }
 
-      Service = {
-        Type = "simple";
-        ExecStart = lib.escapeShellArgs ([ "${cfg.package}/bin/tg-ws-proxy" ] ++ cfg.extraArgs);
-        Restart = "on-failure";
-        RestartSec = "5";
-        Environment = lib.optionals (cfg.extraEnvironment != { }) (
-          lib.mapAttrsToList (name: value: "${name}=${value}") cfg.extraEnvironment
-        );
-      };
+    (lib.mkIf cfg.enable {
+      home.packages = [ cfg.package ];
 
-      Install = {
-        WantedBy = [ "default.target" ];
+      systemd.user.services.tg-ws-proxy = {
+        Unit = {
+          Description = "Telegram MTProto WebSocket Bridge Proxy";
+          After = [ "network.target" ];
+        };
+
+        Service = {
+          Type = "simple";
+          ExecStart = lib.escapeShellArgs ([ "${cfg.package}/bin/tg-ws-proxy" ] ++ cfg.extraArgs);
+          Restart = "on-failure";
+          RestartSec = "5";
+          Environment = lib.optionals (cfg.extraEnvironment != { }) (
+            lib.mapAttrsToList (name: value: "${name}=${value}") cfg.extraEnvironment
+          );
+        };
+
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
       };
-    };
-  };
+    })
+  ];
 }
