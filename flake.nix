@@ -40,8 +40,7 @@
     happ-nixos.url = "github:MrShitFox/happ-nixos";
     happ-nixos.flake = false;
 
-    kimi-cli.url = "github:MoonshotAI/kimi-cli";
-    kimi-cli.inputs.nixpkgs.follows = "nixpkgs";
+    kimi-code.url = "github:MoonshotAI/kimi-code";
   };
 
   outputs = inputs: inputs.blueprint { inherit inputs; };

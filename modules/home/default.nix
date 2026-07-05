@@ -32,7 +32,7 @@
       telegram-desktop
       mattermost-desktop
       eog
-      inputs."kimi-cli".packages.${pkgs.stdenv.hostPlatform.system}.kimi-cli
+      inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
 }
