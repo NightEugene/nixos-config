@@ -50,7 +50,11 @@ in
 
       window-rules = [
         {
-          matches = [ { app-id = "^yandex-browser(-stable)?$"; } ];
+          matches = [
+            { app-id = "^[Yy]andex-browser(-stable)?$"; }
+            { title = "Yandex"; }
+            { title = "Яндекс"; }
+          ];
           open-on-workspace = "www";
         }
         {
@@ -77,7 +81,7 @@ in
 
       spawn-at-startup = [
         { argv = [ "noctalia-shell" ]; }
-        { argv = [ "telegram-desktop" ]; }
+        { argv = [ "Telegram" ]; }
         { argv = [ "max" ]; }
         { argv = [ "yandex-browser" ]; }
       ];
