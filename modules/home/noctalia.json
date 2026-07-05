@@ -97,7 +97,7 @@
         ],
         "center": [
           {
-            "characterCount": 2,
+            "characterCount": 10,
             "colorizeIcons": false,
             "emptyColor": "secondary",
             "enableScrollWheel": true,
