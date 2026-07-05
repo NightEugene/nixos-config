@@ -43,7 +43,7 @@
     },
     "flake-utils": {
       "inputs": {
-        "systems": "systems_3"
+        "systems": "systems_2"
       },
       "locked": {
         "lastModified": 1731533236,
@@ -95,27 +95,21 @@
         "type": "github"
       }
     },
-    "kimi-cli": {
+    "kimi-code": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "pyproject-build-systems": "pyproject-build-systems",
-        "pyproject-nix": "pyproject-nix",
-        "systems": "systems_2",
-        "uv2nix": "uv2nix"
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1782131596,
-        "narHash": "sha256-cHMZxVPfIS/V7W8rb54ASQ8Ufi9z/uCrPL9zBRaTTws=",
+        "lastModified": 1783231593,
+        "narHash": "sha256-GpC70C68G9EjFVgzvNtiDKC65JgwLbdlH6LlK7aUhIw=",
         "owner": "MoonshotAI",
-        "repo": "kimi-cli",
-        "rev": "2c34efbbc6c7cfe40770623281e87c138ff8eb6c",
+        "repo": "kimi-code",
+        "rev": "083d0caf0524ed9cc7978007cd0f342f6bd2917e",
         "type": "github"
       },
       "original": {
         "owner": "MoonshotAI",
-        "repo": "kimi-cli",
+        "repo": "kimi-code",
         "type": "github"
       }
     },
@@ -201,16 +195,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1774709303,
-        "narHash": "sha256-D3Q07BbIA2KnTcSXIqqu9P586uWxN74zNoCH3h2ESHg=",
-        "owner": "nixos",
+        "lastModified": 1779102034,
+        "narHash": "sha256-vZJZjLo513IeI8hjzHFc6TDezUd4uCE2Eq4SNO3DNNg=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "8110df5ad7abf5d4c0f6fb0f8f978390e77f9685",
+        "rev": "687f05a9184cad4eaf905c48b63649e3a86f5433",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
+        "owner": "NixOS",
+        "ref": "nixos-25.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -227,6 +221,22 @@
       "original": {
         "owner": "NixOS",
         "ref": "nixos-25.11",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1774709303,
+        "narHash": "sha256-D3Q07BbIA2KnTcSXIqqu9P586uWxN74zNoCH3h2ESHg=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "8110df5ad7abf5d4c0f6fb0f8f978390e77f9685",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -258,7 +268,7 @@
           "noctalia",
           "nixpkgs"
         ],
-        "systems": "systems_4",
+        "systems": "systems_3",
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
@@ -292,66 +302,16 @@
         "type": "github"
       }
     },
-    "pyproject-build-systems": {
-      "inputs": {
-        "nixpkgs": [
-          "kimi-cli",
-          "nixpkgs"
-        ],
-        "pyproject-nix": [
-          "kimi-cli",
-          "pyproject-nix"
-        ],
-        "uv2nix": [
-          "kimi-cli",
-          "uv2nix"
-        ]
-      },
-      "locked": {
-        "lastModified": 1763662255,
-        "narHash": "sha256-4bocaOyLa3AfiS8KrWjZQYu+IAta05u3gYZzZ6zXbT0=",
-        "owner": "pyproject-nix",
-        "repo": "build-system-pkgs",
-        "rev": "042904167604c681a090c07eb6967b4dd4dae88c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pyproject-nix",
-        "repo": "build-system-pkgs",
-        "type": "github"
-      }
-    },
-    "pyproject-nix": {
-      "inputs": {
-        "nixpkgs": [
-          "kimi-cli",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1764134915,
-        "narHash": "sha256-xaKvtPx6YAnA3HQVp5LwyYG1MaN4LLehpQI8xEdBvBY=",
-        "owner": "pyproject-nix",
-        "repo": "pyproject.nix",
-        "rev": "2c8df1383b32e5443c921f61224b198a2282a657",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pyproject-nix",
-        "repo": "pyproject.nix",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "blueprint": "blueprint",
         "disko": "disko",
         "happ-nixos": "happ-nixos",
         "home-manager": "home-manager",
-        "kimi-cli": "kimi-cli",
+        "kimi-code": "kimi-code",
         "niri": "niri",
         "nix4nvchad": "nix4nvchad",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia"
       }
     },
@@ -387,21 +347,6 @@
     },
     "systems_3": {
       "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_4": {
-      "locked": {
         "lastModified": 1689347949,
         "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
         "owner": "nix-systems",
@@ -434,31 +379,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "uv2nix": {
-      "inputs": {
-        "nixpkgs": [
-          "kimi-cli",
-          "nixpkgs"
-        ],
-        "pyproject-nix": [
-          "kimi-cli",
-          "pyproject-nix"
-        ]
-      },
-      "locked": {
-        "lastModified": 1766021660,
-        "narHash": "sha256-UUfz7qWB1Rb2KjGVCimt//Jncv3TgJwffPqbzqpkmgY=",
-        "owner": "pyproject-nix",
-        "repo": "uv2nix",
-        "rev": "19fa99be3409f55ec05e823c66c9769df7a8dd17",
-        "type": "github"
-      },
-      "original": {
-        "owner": "pyproject-nix",
-        "repo": "uv2nix",
         "type": "github"
       }
     },
