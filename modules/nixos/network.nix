@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
-  networking.hostName = "laptop";
+  networking.hostName = lib.mkDefault "laptop";
 
   networking.networkmanager = {
     enable = true;
