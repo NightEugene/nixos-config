@@ -14,6 +14,7 @@
       "libvirtd"
       "networkmanager"
       "plugdev"
+      "render"
       "wheel"
     ];
   };
