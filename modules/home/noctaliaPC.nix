@@ -44,13 +44,11 @@ in
       "${config.home.homeDirectory}/.cache/noctalia/wallpapers.json"
   '';
 
-  # Запускаем noctalia-shell как user service после активации home-manager,
-  # чтобы он подхватывал актуальный ~/.config/noctalia/settings.json.
+  # Запускаем noctalia-shell как user service внутри graphical session.
   systemd.user.services.noctalia-shell = {
     Unit = {
       Description = "Noctalia Shell";
-      After = [ "home-manager-nighteugene.service" ];
-      Wants = [ "home-manager-nighteugene.service" ];
+      After = [ "graphical-session.target" ];
       PartOf = [ "graphical-session.target" ];
     };
     Service = {
@@ -58,7 +56,7 @@ in
       Restart = "on-failure";
     };
     Install = {
-      WantedBy = [ "default.target" ];
+      WantedBy = [ "graphical-session.target" ];
     };
   };
 }
