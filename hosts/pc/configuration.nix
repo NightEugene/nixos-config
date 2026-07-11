@@ -26,6 +26,12 @@
     }
   ];
 
+  # Гибернация: resume в swap-файл на корневом разделе.
+  # resume_offset = первый physical_offset из `filefrag -v /var/lib/swapfile`.
+  # Если swap-файл пересоздаётся, offset нужно обновить.
+  boot.resumeDevice = "/dev/disk/by-uuid/226cb0fc-f708-48f8-9863-af90490fe02f";
+  boot.kernelParams = [ "resume_offset=462327808" ];
+
   # Десктоп: нет нужды в мобильных сервисах вроде upower/auto-cpufreq.
   services.auto-cpufreq.enable = lib.mkForce false;
   services.upower.enable = lib.mkForce false;
