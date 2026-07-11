@@ -145,7 +145,7 @@ GRUB устанавливается автоматически через кон
    ```
 3. Пересобрать конфигурацию:
    ```bash
-   sudo nixos-rebuild switch --flake /etc/nixos#home
+   sudo nixos-rebuild switch --flake /etc/nixos#pc
    ```
 
 ## Первый вход
@@ -166,7 +166,7 @@ reboot
 После входа в систему:
 
 ```bash
-sudo nixos-rebuild switch --flake /etc/nixos#home
+sudo nixos-rebuild switch --flake /etc/nixos#pc
 ```
 
 Или, если настроен `just`:
@@ -207,7 +207,7 @@ ls -la /mnt/data
 Если GRUB не обнаружил Windows:
 
 ```bash
-sudo nixos-rebuild switch --flake /etc/nixos#home
+sudo nixos-rebuild switch --flake /etc/nixos#pc
 ```
 
 Или загрузить Windows через UEFI boot menu (обычно F12 при старте).
@@ -226,5 +226,5 @@ sudo nixos-rebuild switch --flake /etc/nixos#home
    ```
 4. Проверить конфигурацию:
    ```bash
-   sudo nixos-install --flake /mnt/etc/nixos#home --show-trace 2>&1 | tee /tmp/nixos-install.log
+   sudo nixos-install --flake /mnt/etc/nixos#pc --show-trace 2>&1 | tee /tmp/nixos-install.log
    ```
