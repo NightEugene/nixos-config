@@ -1,7 +1,7 @@
 { config, pkgs, inputs, lib, ... }:
 
 let
-  rawSettings = (builtins.fromJSON (builtins.readFile ./noctaliaHome.json)).settings;
+  rawSettings = (builtins.fromJSON (builtins.readFile ./noctaliaPC.json)).settings;
 
   substituteHome =
     value:
@@ -14,7 +14,7 @@ let
     else
       value;
 
-  wallpaperFile = "${./noctaliaHomeWallpaper.jpg}";
+  wallpaperFile = "${./noctaliaPCWallpaper.jpg}";
 
   wallpaperState = {
     defaultWallpaper = "${config.programs.noctalia-shell.package}/share/noctalia-shell/Assets/Wallpaper/noctalia.png";

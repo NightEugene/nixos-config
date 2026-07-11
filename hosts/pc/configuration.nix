@@ -7,7 +7,7 @@
 
 {
   imports = [
-    # Для home disk-config.nix НЕ импортируется автоматически,
+    # Для pc disk-config.nix НЕ импортируется автоматически,
     # так как он требует ручного применения при установке.
     # inputs.disko.nixosModules.disko
     flake.nixosModules.default
@@ -16,7 +16,7 @@
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = "home";
+  networking.hostName = "pc";
 
   # Swap-файл на корневом разделе, аналогично laptop.
   swapDevices = [

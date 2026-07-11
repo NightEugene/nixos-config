@@ -1,6 +1,6 @@
-# Установка NixOS на ПК `home`
+# Установка NixOS на ПК `pc`
 
-Эта инструкция описывает установку NixOS на стационарный ПК `home`, заменяя существующую Ubuntu на `nvme0n1p4`, с сохранением Windows и data-разделов.
+Эта инструкция описывает установку NixOS на стационарный ПК `pc`, заменяя существующую Ubuntu на `nvme0n1p4`, с сохранением Windows и data-разделов.
 
 ## Аппаратная конфигурация
 
@@ -62,7 +62,7 @@ lsblk -f
 sudo parted /dev/nvme0n1 unit s print
 ```
 
-Если размеры/границы разделов отличаются от тех, что указаны в `hosts/home/disk-config.nix`, перед продолжением нужно обновить `disk-config.nix` и `hardware-configuration.nix`.
+Если размеры/границы разделов отличаются от тех, что указаны в `hosts/pc/disk-config.nix`, перед продолжением нужно обновить `disk-config.nix` и `hardware-configuration.nix`.
 
 ## Форматирование root-раздела
 
@@ -110,7 +110,7 @@ sudo git checkout master
 lsblk -f /dev/nvme0n1
 ```
 
-Открыть `hosts/home/hardware-configuration.nix` и заменить UUID для `/` на новый:
+Открыть `hosts/pc/hardware-configuration.nix` и заменить UUID для `/` на новый:
 
 ```nix
 fileSystems."/" = {
@@ -127,14 +127,14 @@ fileSystems."/" = {
 
 ```bash
 cd /mnt/etc/nixos
-sudo nixos-install --flake .#home --no-channel-copy
+sudo nixos-install --flake .#pc --no-channel-copy
 ```
 
 Пароль root будет запрошен в процессе установки.
 
 ## Настройка загрузчика
 
-GRUB устанавливается автоматически через конфиг `hosts/home/boot.nix`. `os-prober` должен обнаружить Windows на `sda`.
+GRUB устанавливается автоматически через конфиг `hosts/pc/boot.nix`. `os-prober` должен обнаружить Windows на `sda`.
 
 Если после установки Windows не появляется в меню GRUB:
 
@@ -185,7 +185,7 @@ just switch
 nvidia-smi
 ```
 
-Если Wayland/niri не запускается, возможно потребуется отключить `hardware.nvidia.modesetting.enable` или переключиться на `open` драйвер в `hosts/home/hardware-configuration.nix`.
+Если Wayland/niri не запускается, возможно потребуется отключить `hardware.nvidia.modesetting.enable` или переключиться на `open` драйвер в `hosts/pc/hardware-configuration.nix`.
 
 ## Проверка NTFS-разделов
 
