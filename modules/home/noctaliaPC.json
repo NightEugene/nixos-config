@@ -100,6 +100,7 @@
             "left": [
                {
                   "colorizeSystemIcon": "none",
+                  "colorizeSystemText": "none",
                   "customIconPath": "",
                   "enableColorization": false,
                   "icon": "rocket",
@@ -145,6 +146,7 @@
                   "maxWidth": 145,
                   "scrollingMode": "hover",
                   "showIcon": true,
+                  "showText": true,
                   "textColor": "none",
                   "useFixedWidth": false
                },
@@ -194,34 +196,24 @@
                   "textColor": "none"
                },
                {
-                  "defaultSettings": {
-                     "connectedColor": "primary",
-                     "disconnectedColor": "none",
-                     "displayMode": "onhover"
-                  },
-                  "displayMode": "alwaysShow",
-                  "iconColor": "none",
-                  "id": "plugin:network-manager-vpn",
-                  "textColor": "none"
-               },
-               {
                   "displayMode": "forceOpen",
-                  "iconColor": "secondary",
+                  "iconColor": "none",
                   "id": "Network",
                   "showIcon": true,
-                  "textColor": "primary"
+                  "textColor": "none"
                },
                {
                   "displayMode": "forceOpen",
                   "iconColor": "none",
                   "id": "KeyboardLayout",
-                  "showIcon": false,
+                  "showIcon": true,
                   "showLabel": true,
                   "textColor": "none"
                },
                {
                   "colorizeDistroLogo": false,
                   "colorizeSystemIcon": "none",
+                  "colorizeSystemText": "none",
                   "customIconPath": "",
                   "enableColorization": false,
                   "icon": "noctalia",
@@ -724,7 +716,7 @@
          "settingsSidebarExpanded": true
       },
       "wallpapers": {
-         "HDMI-A-1": "/home/nighteugene/Pictures/Wallpapers/forest-summer-2560x1080.jpg"
+         "HDMI-A-1": "/nix/store/a95ib1qrpmla3b3h35qgc0qkzmbbcdar-noctaliaPCWallpaper.jpg"
       }
    }
 }
