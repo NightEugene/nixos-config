@@ -13,6 +13,19 @@ let
       lib.mapAttrs (_: substituteHome) value
     else
       value;
+
+  wallpaperFile = "${config.home.homeDirectory}/Pictures/Wallpapers/forest-summer-2560x1080.jpg";
+
+  wallpaperState = {
+    defaultWallpaper = "${config.programs.noctalia-shell.package}/share/noctalia-shell/Assets/Wallpaper/noctalia.png";
+    usedRandomWallpapers = { };
+    wallpapers = {
+      HDMI-A-1 = {
+        dark = wallpaperFile;
+        light = wallpaperFile;
+      };
+    };
+  };
 in
 {
   imports = [
@@ -23,4 +36,11 @@ in
     enable = true;
     settings = substituteHome rawSettings;
   };
+
+  # Сохраняем текущий noctalia state (выбранные обои) в ~/.cache/noctalia/wallpapers.json
+  home.activation.copyNoctaliaWallpapers = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p "${config.home.homeDirectory}/.cache/noctalia"
+    cp ${pkgs.writeText "noctalia-wallpapers.json" (builtins.toJSON wallpaperState)} \
+      "${config.home.homeDirectory}/.cache/noctalia/wallpapers.json"
+  '';
 }
