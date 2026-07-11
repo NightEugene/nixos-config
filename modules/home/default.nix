@@ -63,6 +63,7 @@
       tree
       file
       gimp
+      wl-clipboard
       opencode
       clang
       telegram-desktop
