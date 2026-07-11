@@ -34,6 +34,9 @@
     noctalia.url = "github:noctalia-dev/noctalia-shell/13964255121d100a7306e76a28010f19e8b33a1a";
     noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
+    grub2-themes.url = "github:vinceliuice/grub2-themes";
+    grub2-themes.inputs.nixpkgs.follows = "nixpkgs";
+
     nix4nvchad.url = "github:nix-community/nix4nvchad";
     nix4nvchad.inputs.nixpkgs.follows = "nixpkgs";
 

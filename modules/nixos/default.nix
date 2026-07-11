@@ -16,6 +16,7 @@
     ./services.nix
     ./users.nix
     ./virt.nix
+    ./grub.nix
   ];
 
   system.stateVersion = "25.11";
