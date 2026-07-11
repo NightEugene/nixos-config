@@ -107,6 +107,9 @@ let
         gst_all_1.gst-plugins-bad
         gst_all_1.gst-plugins-ugly
         gst_all_1.gst-libav
+
+        # QEMU emulator dependencies
+        util-linux
       ]);
 
     runScript = "${aurora-sdk-runner}/bin/aurora-sdk-runner";
