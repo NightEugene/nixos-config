@@ -1,7 +1,7 @@
 { config, pkgs, inputs, lib, ... }:
 
 let
-  rawSettings = (builtins.fromJSON (builtins.readFile ./noctalia.json)).settings;
+  rawSettings = (builtins.fromJSON (builtins.readFile ./noctaliaLaptop.json)).settings;
 
   substituteHome =
     value:
