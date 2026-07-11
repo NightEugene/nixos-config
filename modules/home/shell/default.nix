@@ -49,7 +49,7 @@ in
       zshJustfilePlugin
     ];
 
-    initExtra = ''
+    initContent = ''
       # Launch kimi in the NixOS config directory and load SESSION.md context
       nixos-kimi() {
         local config_dir="/home/nighteugene/git/nighteugene/nixos-config"
