@@ -8,7 +8,6 @@
     ./yandex-browser.nix
     ./aurora-sdk.nix
     #./tg-ws-proxy.nix
-    ./noctalia.nix
     ./vim.nix
   ];
 
