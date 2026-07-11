@@ -83,7 +83,6 @@ in
       };
 
       spawn-at-startup = [
-        { argv = [ "noctalia-shell" ]; }
         { argv = [ "Telegram" ]; }
         { argv = [ "max" ]; }
         { argv = [ "yandex-browser" ]; }

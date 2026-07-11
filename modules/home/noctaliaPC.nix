@@ -43,4 +43,22 @@ in
     cp ${pkgs.writeText "noctalia-wallpapers.json" (builtins.toJSON wallpaperState)} \
       "${config.home.homeDirectory}/.cache/noctalia/wallpapers.json"
   '';
+
+  # Запускаем noctalia-shell как user service после активации home-manager,
+  # чтобы он подхватывал актуальный ~/.config/noctalia/settings.json.
+  systemd.user.services.noctalia-shell = {
+    Unit = {
+      Description = "Noctalia Shell";
+      After = [ "home-manager-nighteugene.service" ];
+      Wants = [ "home-manager-nighteugene.service" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${config.programs.noctalia-shell.package}/bin/noctalia-shell";
+      Restart = "on-failure";
+    };
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
 }
