@@ -31,7 +31,7 @@
     niri.url = "github:sodiboo/niri-flake";
     niri.inputs.nixpkgs.follows = "nixpkgs";
 
-    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    noctalia.url = "github:noctalia-dev/noctalia-shell/13964255121d100a7306e76a28010f19e8b33a1a";
     noctalia.inputs.nixpkgs.follows = "nixpkgs";
 
     nix4nvchad.url = "github:nix-community/nix4nvchad";
