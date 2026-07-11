@@ -23,12 +23,12 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/13b4786b-75e7-4890-ac0e-09aa014d2717";
+    device = "/dev/disk/by-uuid/226cb0fc-f708-48f8-9863-af90490fe02f";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/3317-C62E";
+    device = "/dev/disk/by-uuid/9BD8-B70C";
     fsType = "vfat";
     options = [
       "fmask=0077"
@@ -37,8 +37,7 @@
   };
 
   # Windows + data + games разделы оставляем нетронутыми и монтируем только для доступа.
-  # UUIDы взяты с текущей Ubuntu-системы, при установке NixOS могут не измениться,
-  # но лучше перепроверить командой `lsblk -f` с Live-носителя.
+  # UUIDы root и boot актуальны для текущей NixOS-системы (проверены через `lsblk -f`).
   fileSystems."/mnt/windows" = {
     device = "/dev/disk/by-uuid/F2AA5D34AA5CF717";
     fsType = "ntfs-3g";
