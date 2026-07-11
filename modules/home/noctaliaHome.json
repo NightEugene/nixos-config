@@ -70,7 +70,7 @@
           },
           {
             "colorizeIcons": false,
-            "hideMode": "hidden",
+            "hideMode": "visible",
             "id": "ActiveWindow",
             "maxWidth": 145,
             "scrollingMode": "hover",
@@ -147,13 +147,6 @@
             "textColor": "none"
           },
           {
-            "applyToAllMonitors": false,
-            "displayMode": "onhover",
-            "iconColor": "none",
-            "id": "Brightness",
-            "textColor": "none"
-          },
-          {
             "defaultSettings": {
               "connectedColor": "primary",
               "disconnectedColor": "none",
@@ -166,15 +159,6 @@
             "iconColor": "none",
             "id": "Network",
             "textColor": "none"
-          },
-          {
-            "deviceNativePath": "__default__",
-            "displayMode": "graphic-clean",
-            "hideIfIdle": false,
-            "hideIfNotDetected": false,
-            "id": "Battery",
-            "showNoctaliaPerformance": false,
-            "showPowerProfiles": false
           },
           {
             "displayMode": "forceOpen",
