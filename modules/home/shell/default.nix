@@ -30,6 +30,7 @@ in
         suffix-alias = "fg=green";
         path = "fg=cyan";
         precommand = "fg=green";
+        comment = "fg=251";
       };
     };
 
