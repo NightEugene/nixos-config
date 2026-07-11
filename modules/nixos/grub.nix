@@ -8,7 +8,7 @@
   boot.loader.grub2-theme = {
     enable = true;
     theme = "stylish";
-    icon = "white";
+    icon = "color";
     screen = "1080p";
   };
 }
