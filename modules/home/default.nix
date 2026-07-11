@@ -62,6 +62,7 @@
       nh
       tree
       file
+      gimp
       opencode
       clang
       telegram-desktop
