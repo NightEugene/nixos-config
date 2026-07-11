@@ -14,7 +14,7 @@ let
     else
       value;
 
-  wallpaperFile = "${config.home.homeDirectory}/Pictures/Wallpapers/forest-summer-2560x1080.jpg";
+  wallpaperFile = "${./noctaliaHomeWallpaper.jpg}";
 
   wallpaperState = {
     defaultWallpaper = "${config.programs.noctalia-shell.package}/share/noctalia-shell/Assets/Wallpaper/noctalia.png";
