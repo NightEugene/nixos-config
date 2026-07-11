@@ -196,19 +196,17 @@
                   "textColor": "none"
                },
                {
-                  "displayMode": "forceOpen",
+                  "displayMode": "alwaysShow",
                   "iconColor": "none",
                   "id": "Network",
-                  "showIcon": true,
                   "textColor": "none"
                },
                {
                   "displayMode": "forceOpen",
-                  "iconColor": "none",
+                  "iconColor": "primary",
                   "id": "KeyboardLayout",
                   "showIcon": true,
-                  "showLabel": true,
-                  "textColor": "none"
+                  "textColor": "secondary"
                },
                {
                   "colorizeDistroLogo": false,
