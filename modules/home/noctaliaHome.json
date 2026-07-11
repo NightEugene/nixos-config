@@ -321,7 +321,7 @@
         {
           "directory": "/home/nighteugene/Pictures/Wallpapers",
           "name": "eDP-1",
-          "wallpaper": ""
+          "wallpaper": "forest-summer-2560x1080.jpg"
         }
       ],
       "enableMultiMonitorDirectories": false,
@@ -329,6 +329,7 @@
       "viewMode": "single",
       "setWallpaperOnAllMonitors": true,
       "fillMode": "crop",
+      "wallpaper": "forest-summer-2560x1080.jpg",
       "fillColor": "#000000",
       "useSolidColor": false,
       "solidColor": "#1a1a2e",
