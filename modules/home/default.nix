@@ -61,6 +61,7 @@
       just
       nh
       tree
+      file
       opencode
       clang
       telegram-desktop
