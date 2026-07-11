@@ -40,6 +40,11 @@
     config.common.default = "*";
   };
 
+  security.sudo = {
+    enable = true;
+    wheelNeedsPassword = true;
+  };
+
   nix.settings = {
     experimental-features = [
       "nix-command"
