@@ -304,7 +304,7 @@
       "monitorDirectories": [
         {
           "directory": "/home/nighteugene/Pictures/Wallpapers",
-          "name": "eDP-1",
+          "name": "HDMI-A-1",
           "wallpaper": "/home/nighteugene/Pictures/Wallpapers/forest-summer-2560x1080.jpg"
         }
       ],
@@ -673,7 +673,7 @@
       "gridSnapScale": false,
       "monitorWidgets": [
         {
-          "name": "eDP-1",
+          "name": "HDMI-A-1",
           "widgets": []
         }
       ]
