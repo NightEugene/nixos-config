@@ -56,6 +56,9 @@ in
             { title = "Яндекс"; }
           ];
           open-on-workspace = "www";
+          default-column-width = {
+            proportion = 1.0;
+          };
         }
         {
           matches = [ { app-id = "^(telegramdesktop|org\\.telegram\\.desktop)$"; } ];
