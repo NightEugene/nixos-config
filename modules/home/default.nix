@@ -66,6 +66,7 @@
       telegram-desktop
       mattermost-desktop
       eog
+      wayland-utils
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
