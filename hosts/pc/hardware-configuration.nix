@@ -85,10 +85,15 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = true;
-    powerManagement.enable = false;
+    # Включено для корректного resume после гибернации:
+    # драйвер сохраняет/восстанавливает видеопамять и состояние GPU.
+    powerManagement.enable = true;
     powerManagement.finegrained = false;
     open = false;
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+  # Сохранять видеопамять NVIDIA при suspend/hibernate.
+  boot.kernelParams = [ "nvidia.NVreg_PreserveVideoMemoryAllocations=1" ];
 }
