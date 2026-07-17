@@ -4,9 +4,8 @@ let
   noctalia =
     cmd:
     [
-      "noctalia-shell"
-      "ipc"
-      "call"
+      "noctalia"
+      "msg"
     ]
     ++ (pkgs.lib.splitString " " cmd);
 in
@@ -127,8 +126,8 @@ in
         "Mod+Shift+Up".action.move-window-up = [ ];
         "Mod+Shift+Down".action.move-window-down = [ ];
 
-        "Mod+D".action.spawn = noctalia "launcher toggle";
-        "Mod+P".action.spawn = noctalia "sessionMenu toggle";
+        "Mod+D".action.spawn = noctalia "panel-toggle launcher";
+        "Mod+P".action.spawn = noctalia "panel-toggle session";
 
         "Mod+Print".action.screenshot = [ ];
         "Print".action.screenshot-screen = [ ];
