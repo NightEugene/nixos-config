@@ -14,6 +14,14 @@
     ./hardware-configuration.nix
   ];
 
+  home-manager = {
+    extraSpecialArgs = {
+      inherit inputs;
+      inherit flake;
+    };
+    users.nighteugene = import ./users/nighteugene/home-configuration.nix;
+  };
+
   swapDevices = [
     {
       device = "/var/lib/swapfile";

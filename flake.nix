@@ -19,8 +19,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    blueprint.url = "github:numtide/blueprint";
-    blueprint.inputs.nixpkgs.follows = "nixpkgs";
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -46,5 +45,53 @@
     kimi-code.url = "github:MoonshotAI/kimi-code";
   };
 
-  outputs = inputs: inputs.blueprint { inherit inputs; };
+  outputs =
+    inputs@{ flake-parts, self, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" ];
+
+      perSystem =
+        { pkgs, ... }:
+        {
+          formatter = pkgs.nixfmt-rfc-style;
+        };
+
+      flake = {
+        nixosModules.default = import ./modules/nixos/default.nix;
+
+        homeModules = {
+          default = import ./modules/home/default.nix;
+          noctaliaPC = import ./modules/home/noctaliaPC.nix;
+          noctaliaLaptop = import ./modules/home/noctaliaLaptop.nix;
+        };
+
+        nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+            flake = self;
+          };
+          modules = [
+            inputs.disko.nixosModules.disko
+            inputs.home-manager.nixosModules.home-manager
+            self.nixosModules.default
+            ./hosts/pc/configuration.nix
+          ];
+        };
+
+        nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs;
+            flake = self;
+          };
+          modules = [
+            inputs.disko.nixosModules.disko
+            inputs.home-manager.nixosModules.home-manager
+            self.nixosModules.default
+            ./hosts/laptop/configuration.nix
+          ];
+        };
+      };
+    };
 }

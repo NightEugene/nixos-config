@@ -16,6 +16,14 @@
     ./hardware-configuration.nix
   ];
 
+  home-manager = {
+    extraSpecialArgs = {
+      inherit inputs;
+      inherit flake;
+    };
+    users.nighteugene = import ./users/nighteugene/home-configuration.nix;
+  };
+
   networking.hostName = "pc";
 
   # Swap-файл на корневом разделе, аналогично laptop.
