@@ -9,6 +9,7 @@
     ./aurora-sdk.nix
     ./tg-ws-proxy.nix
     ./vim.nix
+    ./options.nix
   ];
 
   programs.direnv = {

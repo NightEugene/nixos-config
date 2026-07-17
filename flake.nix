@@ -53,7 +53,12 @@
       perSystem =
         { pkgs, ... }:
         {
-          formatter = pkgs.nixfmt-rfc-style;
+          formatter = pkgs.nixfmt;
+
+          checks = {
+            pc = self.nixosConfigurations.pc.config.system.build.toplevel;
+            laptop = self.nixosConfigurations.laptop.config.system.build.toplevel;
+          };
         };
 
       flake = {
@@ -65,33 +70,38 @@
           noctaliaLaptop = import ./modules/home/noctaliaLaptop.nix;
         };
 
-        nixosConfigurations.pc = inputs.nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-            flake = self;
-          };
-          modules = [
-            inputs.disko.nixosModules.disko
-            inputs.home-manager.nixosModules.home-manager
-            self.nixosModules.default
-            ./hosts/pc/configuration.nix
-          ];
-        };
+        nixosConfigurations =
+          let
+            mkHost =
+              hostname: extraModules:
+              inputs.nixpkgs.lib.nixosSystem {
+                system = "x86_64-linux";
+                specialArgs = {
+                  inherit inputs;
+                  flake = self;
+                };
+                modules = [
+                  inputs.disko.nixosModules.disko
+                  inputs.home-manager.nixosModules.home-manager
+                  self.nixosModules.default
+                  {
+                    networking.hostName = hostname;
 
-        nixosConfigurations.laptop = inputs.nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs;
-            flake = self;
+                    home-manager = {
+                      extraSpecialArgs = {
+                        inherit inputs;
+                        flake = self;
+                      };
+                      users.nighteugene = import ./hosts/${hostname}/users/nighteugene/home-configuration.nix;
+                    };
+                  }
+                ] ++ extraModules;
+              };
+          in
+          {
+            pc = mkHost "pc" [ ./hosts/pc/configuration.nix ];
+            laptop = mkHost "laptop" [ ./hosts/laptop/configuration.nix ];
           };
-          modules = [
-            inputs.disko.nixosModules.disko
-            inputs.home-manager.nixosModules.home-manager
-            self.nixosModules.default
-            ./hosts/laptop/configuration.nix
-          ];
-        };
       };
     };
 }

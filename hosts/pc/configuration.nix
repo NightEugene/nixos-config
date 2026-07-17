@@ -16,25 +16,13 @@
     ./hardware-configuration.nix
   ];
 
-  home-manager = {
-    extraSpecialArgs = {
-      inherit inputs;
-      inherit flake;
-    };
-    users.nighteugene = import ./users/nighteugene/home-configuration.nix;
-  };
-
-  networking.hostName = "pc";
-
   # Swap-файл на корневом разделе, аналогично laptop.
   # Увеличен до 24 ГиБ, чтобы гарантированно хватало места для образа hibernate
   # (RAM 15 ГиБ + запас на сжатие/фрагментацию).
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 24 * 1024; # 24GB in MB
-    }
-  ];
+  my.swapFile = {
+    enable = true;
+    sizeMiB = 24 * 1024;
+  };
 
   # Гибернация: resume в swap-файл на корневом разделе.
   # resume_offset = первый physical_offset из `filefrag -v /var/lib/swapfile`.
