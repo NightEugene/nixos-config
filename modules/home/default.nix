@@ -7,7 +7,7 @@
     ./max.nix
     ./yandex-browser.nix
     ./aurora-sdk.nix
-    #./tg-ws-proxy.nix
+    ./tg-ws-proxy.nix
     ./vim.nix
   ];
 
