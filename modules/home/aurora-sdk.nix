@@ -123,14 +123,11 @@ let
     dontFixup = true;
     dontStrip = true;
 
-    nativeBuildInputs = [ pkgs.librsvg ];
-
     installPhase = ''
       mkdir -p $out/bin $out/share/applications $out/share/icons/hicolor/512x512/apps
 
       install -Dm755 ${launcher} $out/bin/aurora-sdk
-      rsvg-convert -w 512 -h 512 ${./aurora-sdk-icon.svg} \
-        -o $out/share/icons/hicolor/512x512/apps/aurora-sdk.png
+      install -Dm644 ${./aurora-sdk-icon.png} $out/share/icons/hicolor/512x512/apps/aurora-sdk.png
 
       cat > $out/share/applications/aurora-sdk.desktop <<EOF
 [Desktop Entry]

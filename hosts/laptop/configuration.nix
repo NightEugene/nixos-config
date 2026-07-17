@@ -14,18 +14,8 @@
     ./hardware-configuration.nix
   ];
 
-  home-manager = {
-    extraSpecialArgs = {
-      inherit inputs;
-      inherit flake;
-    };
-    users.nighteugene = import ./users/nighteugene/home-configuration.nix;
+  my.swapFile = {
+    enable = true;
+    sizeMiB = 16 * 1024;
   };
-
-  swapDevices = [
-    {
-      device = "/var/lib/swapfile";
-      size = 16 * 1024; # 16GB in MB
-    }
-  ];
 }
