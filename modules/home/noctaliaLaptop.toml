@@ -83,6 +83,10 @@ show_icon = true
 show_label = true
 hide_when_single_layout = false
 
+[widget.workspaces]
+display = "name"
+max_label_chars = 10
+
 [widget.launcher]
 use_distro_logo = false
 icon = "rocket"
