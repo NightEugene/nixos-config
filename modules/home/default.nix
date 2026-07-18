@@ -71,6 +71,8 @@
       mattermost-desktop
       eog
       wayland-utils
+      qbittorrent
+      vlc
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
