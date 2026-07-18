@@ -34,6 +34,9 @@ transition = ["fade", "wipe", "disc", "stripes", "zoom", "honeycomb"]
 transition_duration = 1500
 edge_smoothness = 0.05
 
+[wallpaper.default]
+path = "@wallpaperFile@"
+
 [notification]
 enable_daemon = true
 
@@ -130,6 +133,3 @@ action = "reboot_to_uefi"
 enabled = true
 shortcut = "7"
 
-[wallpaper.monitor.hdmi-a-1]
-match = "HDMI-A-1"
-path = "~/Pictures/Wallpapers/forest-summer-2560x1080.jpg"
