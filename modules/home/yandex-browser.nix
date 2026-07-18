@@ -28,11 +28,17 @@ let
     dontStrip = true;
   };
 
+  ffmpeg-plugin-browser = pkgs.runCommand "ffmpeg-plugin-browser" { } ''
+    mkdir -p $out/lib/ffmpeg-plugin-browser
+    install -Dm755 ${./yandex-browser-libffmpeg.so} $out/lib/ffmpeg-plugin-browser/libffmpeg.so
+  '';
+
   yandex-browser = pkgs.buildFHSEnv {
     name = "yandex-browser";
 
     targetPkgs = pkgs: [
       yandex-browser-unwrapped
+      ffmpeg-plugin-browser
     ]
     ++ fhsCommon
     ++ (with pkgs; [
