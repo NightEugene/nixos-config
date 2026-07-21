@@ -76,6 +76,7 @@
       qbittorrent
       vlc
       python3
+      git-repo
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
