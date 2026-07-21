@@ -71,6 +71,14 @@
     ];
   };
 
+  # Proton не может создавать symlinks на NTFS (/mnt/games).
+  # Перенаправляем Steam compatdata на ext4 через bind mount.
+  fileSystems."/mnt/games/SteamLibrary/steamapps/compatdata" = {
+    device = "/home/nighteugene/.local/share/Steam/steamapps/compatdata";
+    fsType = "none";
+    options = [ "bind" ];
+  };
+
   swapDevices = [ ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
