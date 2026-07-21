@@ -10,6 +10,7 @@
     ./tg-ws-proxy.nix
     ./vim.nix
     ./options.nix
+    ./rutracker-proxy.nix
   ];
 
   programs.direnv = {
