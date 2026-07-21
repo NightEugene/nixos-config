@@ -58,6 +58,12 @@
   home = {
     stateVersion = "25.11";
 
+    # Proton не может создавать symlinks на NTFS (/mnt/games).
+    # Перенаправляем compatdata на ext4.
+    sessionVariables = {
+      STEAM_COMPAT_DATA_PATH = "${config.home.homeDirectory}/.local/share/Steam/steamapps/compatdata";
+    };
+
     packages = with pkgs; [
       fastfetch
       brightnessctl
