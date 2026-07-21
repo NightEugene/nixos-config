@@ -75,6 +75,7 @@
       wayland-utils
       qbittorrent
       vlc
+      python3
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
