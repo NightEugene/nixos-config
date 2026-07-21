@@ -82,6 +82,8 @@
 
   # NVIDIA RTX 3060: проприетарный драйвер с modesetting для Wayland/niri.
   hardware.graphics.enable = true;
+  # 32-bit библиотеки для Steam и Wine/Proton.
+  hardware.graphics.enable32Bit = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = true;
