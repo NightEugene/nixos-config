@@ -59,9 +59,9 @@ auto_hide = false
 reserve_space = true
 capsule = true
 
-start = ["launcher", "clock", "sysmon", "active_window", "media"]
+start = ["launcher", "clock", "sysmon", "temp", "weather", "active_window"]
 center = ["workspaces"]
-end = ["tray", "notifications", "volume", "network", "keyboard_layout", "control-center"]
+end = ["tray", "notifications", "volume", "network", "bluetooth", "keyboard_layout", "control-center"]
 
 [widget.clock]
 format = "{:%H:%M}"
@@ -137,3 +137,32 @@ action = "reboot_to_uefi"
 enabled = true
 shortcut = "7"
 
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@HDMI-A-1" ]
+
+[lockscreen_widgets.grid]
+cell_size = 16
+major_interval = 4
+visible = true
+
+[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+box_height = 70.0
+box_width = 400.0
+cx = 1280.0
+cy = 961.0
+output = "HDMI-A-1"
+rotation = 0.0
+type = "login_box"
+
+[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+background_color = "surface_variant"
+background_opacity = 0.88
+background_radius = 12.0
+input_opacity = 1.0
+input_radius = 6.0
+show_caps_lock = true
+show_keyboard_layout = true
+show_login_button = true
+show_password_hint = true
