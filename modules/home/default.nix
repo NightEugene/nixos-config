@@ -77,6 +77,7 @@
       vlc
       python3
       git-repo
+      rpm
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
