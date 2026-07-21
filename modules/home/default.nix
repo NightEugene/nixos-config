@@ -12,6 +12,7 @@
     ./options.nix
     ./rutracker-proxy.nix
     ./dotfiles.nix
+    ./osc.nix
   ];
 
   programs.direnv = {
