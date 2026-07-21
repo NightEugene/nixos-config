@@ -10,5 +10,6 @@
     gcc
     gdb
     gnumake
+    openvpn
   ];
 }
