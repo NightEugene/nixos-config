@@ -113,7 +113,10 @@ enabled = true
 shortcut = "2"
 
 [[shell.session.actions]]
-action = "hibernate"
+action = "command"
+label = "Hibernate"
+glyph = "hibernate"
+command = "systemctl hibernate"
 enabled = true
 shortcut = "3"
 
@@ -133,7 +136,10 @@ enabled = true
 shortcut = "6"
 
 [[shell.session.actions]]
-action = "reboot_to_uefi"
+action = "command"
+label = "Reboot to UEFI"
+glyph = "reboot"
+command = "systemctl reboot --firmware-setup"
 enabled = true
 shortcut = "7"
 
