@@ -11,6 +11,7 @@
     ./vim.nix
     ./options.nix
     ./rutracker-proxy.nix
+    ./dotfiles.nix
   ];
 
   programs.direnv = {
