@@ -65,6 +65,12 @@
     "/share/xdg-desktop-portal"
   ];
 
+  # Proton не может создавать symlinks на NTFS (/mnt/games).
+  # Перенаправляем compatdata на ext4.
+  environment.sessionVariables = {
+    STEAM_COMPAT_DATA_PATH = "%h/.local/share/Steam/steamapps/compatdata";
+  };
+
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
