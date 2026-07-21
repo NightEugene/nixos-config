@@ -9,4 +9,5 @@
   programs.evince.enable = true;
   programs.zsh.enable = true;
   programs.nix-ld.enable = true;
+  programs.steam.enable = true;
 }
