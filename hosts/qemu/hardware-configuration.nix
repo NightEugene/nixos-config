@@ -18,12 +18,13 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = lib.mkForce "/dev/disk/by-partlabel/disk-main-root";
+    device = lib.mkForce "/dev/disk/by-label/nixos";
     fsType = "ext4";
+    autoResize = true;
   };
 
   fileSystems."/boot" = {
-    device = lib.mkForce "/dev/disk/by-partlabel/disk-main-ESP";
+    device = lib.mkForce "/dev/disk/by-label/ESP";
     fsType = "vfat";
   };
 
