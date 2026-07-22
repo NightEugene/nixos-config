@@ -43,6 +43,9 @@
     happ-nixos.flake = false;
 
     kimi-code.url = "github:MoonshotAI/kimi-code";
+
+    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -54,6 +57,34 @@
         { pkgs, ... }:
         {
           formatter = pkgs.nixfmt;
+
+          packages = {
+            qcow = inputs.nixos-generators.nixosGenerate {
+              system = "x86_64-linux";
+              format = "qcow";
+              specialArgs = {
+                inherit inputs;
+                flake = self;
+              };
+              modules = [
+                inputs.disko.nixosModules.disko
+                inputs.home-manager.nixosModules.home-manager
+                self.nixosModules.default
+                {
+                  networking.hostName = "qemu";
+
+                  home-manager = {
+                    extraSpecialArgs = {
+                      inherit inputs;
+                      flake = self;
+                    };
+                    users.nighteugene = import ./hosts/qemu/users/nighteugene/home-configuration.nix;
+                  };
+                }
+                ./hosts/qemu/configuration.nix
+              ];
+            };
+          };
 
           checks = {
             pc = self.nixosConfigurations.pc.config.system.build.toplevel;
@@ -101,7 +132,34 @@
           {
             pc = mkHost "pc" [ ./hosts/pc/configuration.nix ];
             laptop = mkHost "laptop" [ ./hosts/laptop/configuration.nix ];
+            qemu = mkHost "qemu" [ ./hosts/qemu/configuration.nix ];
           };
+
+        packages.qcow = inputs.nixos-generators.nixosGenerate {
+          system = "x86_64-linux";
+          format = "qcow";
+          specialArgs = {
+            inherit inputs;
+            flake = self;
+          };
+          modules = [
+            inputs.disko.nixosModules.disko
+            inputs.home-manager.nixosModules.home-manager
+            self.nixosModules.default
+            {
+              networking.hostName = "qemu";
+
+              home-manager = {
+                extraSpecialArgs = {
+                  inherit inputs;
+                  flake = self;
+                };
+                users.nighteugene = import ./hosts/qemu/users/nighteugene/home-configuration.nix;
+              };
+            }
+            ./hosts/qemu/configuration.nix
+          ];
+        };
       };
     };
 }
