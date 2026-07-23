@@ -41,8 +41,8 @@
 
   home.pointerCursor = {
     enable = true;
-    name = "Adwaita";
-    package = pkgs.adwaita-icon-theme;
+    name = "Bibata-Modern-Classic";
+    package = pkgs.bibata-cursors;
     size = 24;
   };
 
@@ -51,7 +51,7 @@
       color-scheme = "prefer-dark";
       gtk-theme = "Adwaita-dark";
       icon-theme = "Adwaita";
-      cursor-theme = "Adwaita";
+      cursor-theme = "Bibata-Modern-Classic";
     };
   };
 
@@ -82,6 +82,7 @@
       wayland-utils
       qbittorrent
       vlc
+      bibata-cursors
       python3
       git-repo
       rpm
