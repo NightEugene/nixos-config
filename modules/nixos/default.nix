@@ -71,9 +71,17 @@
     STEAM_COMPAT_DATA_PATH = "%h/.local/share/Steam/steamapps/compatdata";
   };
 
-  fonts.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-  ];
+  fonts = {
+    packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+    ];
+
+    fontconfig.defaultFonts = {
+      monospace = [ "JetBrainsMono Nerd Font Mono" ];
+      sansSerif = [ "JetBrainsMono Nerd Font" ];
+      serif = [ "JetBrainsMono Nerd Font" ];
+    };
+  };
 
   programs.dconf.enable = true;
 }
