@@ -68,6 +68,8 @@
     # Перенаправляем compatdata на ext4.
     sessionVariables = {
       STEAM_COMPAT_DATA_PATH = "${config.home.homeDirectory}/.local/share/Steam/steamapps/compatdata";
+      XCURSOR_THEME = "Bibata-Modern-Classic";
+      XCURSOR_SIZE = "24";
     };
 
     packages = with pkgs; [
