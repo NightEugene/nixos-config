@@ -31,6 +31,10 @@
       package = pkgs.adwaita-icon-theme;
     };
     gtk4.theme = config.gtk.theme;
+    font = {
+      name = "JetBrainsMono Nerd Font Mono";
+      size = 11;
+    };
   };
 
   qt = {
@@ -52,6 +56,8 @@
       gtk-theme = "Adwaita-dark";
       icon-theme = "Adwaita";
       cursor-theme = "Bibata-Modern-Classic";
+      monospace-font-name = "JetBrainsMono Nerd Font Mono 11";
+      document-font-name = "JetBrainsMono Nerd Font 11";
     };
   };
 
