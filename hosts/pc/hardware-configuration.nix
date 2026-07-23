@@ -38,6 +38,7 @@
 
   # Windows + data + games разделы оставляем нетронутыми и монтируем только для доступа.
   # UUIDы root и boot актуальны для текущей NixOS-системы (проверены через `lsblk -f`).
+  # uid=1000 делает файлы принадлежащими nighteugene, fmask/dmask задают права 644/755.
   fileSystems."/mnt/windows" = {
     device = "/dev/disk/by-uuid/F2AA5D34AA5CF717";
     fsType = "ntfs-3g";
@@ -45,6 +46,8 @@
       "rw"
       "uid=1000"
       "gid=100"
+      "fmask=0133"
+      "dmask=0022"
       "windows_names"
     ];
   };
@@ -56,6 +59,8 @@
       "rw"
       "uid=1000"
       "gid=100"
+      "fmask=0133"
+      "dmask=0022"
       "windows_names"
     ];
   };
@@ -67,6 +72,8 @@
       "rw"
       "uid=1000"
       "gid=100"
+      "fmask=0133"
+      "dmask=0022"
       "windows_names"
     ];
   };
