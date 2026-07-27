@@ -94,6 +94,7 @@
       python3
       git-repo
       rpm
+      expect
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
