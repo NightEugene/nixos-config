@@ -51,6 +51,10 @@ in
     ];
 
     initContent = ''
+      # home.sessionPath не всегда применяется во вложенных сессиях,
+      # поэтому добавляем ~/scripts в PATH явно в zsh.
+      export PATH="$HOME/scripts''${PATH:+:$PATH}"
+
       # Launch kimi in the NixOS config directory and load SESSION.md context
       nixos-kimi() {
         local config_dir="/home/nighteugene/git/nighteugene/nixos-config"
