@@ -72,6 +72,10 @@
       XCURSOR_SIZE = "24";
     };
 
+    sessionPath = [
+      "${config.home.homeDirectory}/scripts"
+    ];
+
     packages = with pkgs; [
       fastfetch
       brightnessctl
