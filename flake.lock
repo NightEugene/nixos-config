@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "aurora-sdk": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785342977,
+        "narHash": "sha256-synKEpdwrd8eO+rwDtCj89oRvjWjPhuoYtQpUfHS2dA=",
+        "owner": "NightEugene",
+        "repo": "aurora-sdk-nix",
+        "rev": "b50e7856b21e0b6006f645268be65646f706e932",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NightEugene",
+        "repo": "aurora-sdk-nix",
+        "type": "github"
+      }
+    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -348,6 +368,7 @@
     },
     "root": {
       "inputs": {
+        "aurora-sdk": "aurora-sdk",
         "disko": "disko",
         "flake-parts": "flake-parts",
         "grub2-themes": "grub2-themes",
