@@ -44,6 +44,9 @@
 
     kimi-code.url = "github:MoonshotAI/kimi-code";
 
+    aurora-sdk.url = "github:NightEugene/aurora-sdk-nix";
+    aurora-sdk.inputs.nixpkgs.follows = "nixpkgs";
+
     nixos-generators.url = "github:nix-community/nixos-generators";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
   };

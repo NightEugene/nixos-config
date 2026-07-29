@@ -6,7 +6,7 @@
     ./niri.nix
     ./max.nix
     ./yandex-browser.nix
-    ./aurora-sdk.nix
+    inputs.aurora-sdk.homeModules.default
     ./tg-ws-proxy.nix
     ./vim.nix
     ./options.nix
@@ -14,6 +14,8 @@
     ./dotfiles.nix
     ./osc.nix
   ];
+
+  programs.aurora-sdk.enable = true;
 
   programs.direnv = {
     enable = true;
