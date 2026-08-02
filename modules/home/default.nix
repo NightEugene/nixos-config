@@ -1,4 +1,9 @@
-{ pkgs, inputs, config, ... }:
+{
+  pkgs,
+  inputs,
+  config,
+  ...
+}:
 {
   imports = [
     ./shell
@@ -60,6 +65,16 @@
       cursor-theme = "Bibata-Modern-Classic";
       monospace-font-name = "JetBrainsMono Nerd Font Mono 11";
       document-font-name = "JetBrainsMono Nerd Font 11";
+    };
+  };
+
+  xdg = {
+    enable = true;
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "application/pdf" = "org.gnome.Evince.desktop";
+      };
     };
   };
 
