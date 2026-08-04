@@ -82,9 +82,13 @@ show_progress_ring = true
 
 [widget.keyboard_layout]
 display = "short"
-show_icon = true
+show_icon = false
 show_label = true
 hide_when_single_layout = false
+
+[widget.keyboard_layout.custom_labels]
+us = "🇺🇸"
+ru = "🇷🇺"
 
 [widget.battery]
 device = "auto"
