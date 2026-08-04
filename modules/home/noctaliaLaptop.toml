@@ -44,6 +44,9 @@ enable_daemon = true
 position = "top_right"
 background_opacity = 0.97
 
+[osd.kinds]
+keyboard_layout = false
+
 [bar.main]
 position = "top"
 thickness = 34
