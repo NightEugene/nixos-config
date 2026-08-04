@@ -61,7 +61,7 @@ capsule = true
 
 start = ["launcher", "clock", "sysmon", "active_window", "media"]
 center = ["workspaces"]
-end = ["tray", "notifications", "volume", "brightness", "network", "keyboard_layout", "battery", "control-center"]
+end = ["tray", "notifications", "volume", "brightness", "network", "bluetooth", "keyboard_layout", "battery", "control-center"]
 
 [widget.clock]
 format = "{:%H:%M}"
@@ -92,6 +92,14 @@ display_mode = "glyph"
 show_label = true
 hide_when_plugged = false
 hide_when_full = false
+
+[widget.bluetooth]
+show_label = false
+hide_when_no_connected_device = false
+
+[widget.network]
+show_label = false
+show_vpn_label = false
 
 [widget.workspaces]
 display = "name"
