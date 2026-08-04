@@ -49,6 +49,9 @@
 
     nixos-generators.url = "github:nix-community/nixos-generators";
     nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
+
+    kuna.url = "github:Noelo-Lab/kuna";
+    kuna.flake = false;
   };
 
   outputs =
@@ -129,7 +132,8 @@
                       users.nighteugene = import ./hosts/${hostname}/users/nighteugene/home-configuration.nix;
                     };
                   }
-                ] ++ extraModules;
+                ]
+                ++ extraModules;
               };
           in
           {

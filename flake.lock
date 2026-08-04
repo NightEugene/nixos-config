@@ -150,6 +150,22 @@
         "type": "github"
       }
     },
+    "kuna": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785798997,
+        "narHash": "sha256-Mea0Z74udpgFb43IU3Q1t/oOnZXqgUtwp4HN3AhJ7rc=",
+        "owner": "Noelo-Lab",
+        "repo": "kuna",
+        "rev": "3ecaec093556960e700f5819eeabadec5bdefe8d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Noelo-Lab",
+        "repo": "kuna",
+        "type": "github"
+      }
+    },
     "niri": {
       "inputs": {
         "niri-stable": "niri-stable",
@@ -375,6 +391,7 @@
         "happ-nixos": "happ-nixos",
         "home-manager": "home-manager",
         "kimi-code": "kimi-code",
+        "kuna": "kuna",
         "niri": "niri",
         "nix4nvchad": "nix4nvchad",
         "nixos-generators": "nixos-generators",
