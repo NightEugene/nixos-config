@@ -87,7 +87,7 @@ show_label = true
 hide_when_single_layout = false
 
 [widget.keyboard_layout.custom_labels]
-us = "🇺🇸"
+us = "🇬🇧"
 ru = "🇷🇺"
 
 [widget.battery]
