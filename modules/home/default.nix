@@ -4,6 +4,22 @@
   config,
   ...
 }:
+
+let
+  kuna = pkgs.rustPlatform.buildRustPackage {
+    pname = "kuna";
+    version = "0.1.0";
+    src = inputs.kuna;
+    sourceRoot = "source/decompiler";
+
+    cargoLock.lockFile = "${inputs.kuna}/decompiler/Cargo.lock";
+    cargoBuildFlags = [ "-p kuna-cli" ];
+
+    doCheck = false;
+
+    meta.mainProgram = "kuna";
+  };
+in
 {
   imports = [
     ./shell
@@ -117,6 +133,7 @@
       rpm
       expect
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default
+      kuna
     ];
   };
 }
