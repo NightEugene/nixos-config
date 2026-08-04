@@ -87,8 +87,11 @@ show_label = true
 hide_when_single_layout = false
 
 [widget.battery]
-show_percentage = true
-show_icon = true
+device = "auto"
+display_mode = "glyph"
+show_label = true
+hide_when_plugged = false
+hide_when_full = false
 
 [widget.workspaces]
 display = "name"
