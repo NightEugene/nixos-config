@@ -13,9 +13,43 @@ let
     sourceRoot = "source/decompiler";
 
     cargoLock.lockFile = "${inputs.kuna}/decompiler/Cargo.lock";
-    cargoBuildFlags = [ "-p kuna-cli" ];
+    cargoBuildFlags = [
+      "-p kuna-cli"
+      "-p kuna-console"
+      "-p kuna-harness"
+      "-p kuna-slacomp"
+    ];
+
+    nativeBuildInputs = [ pkgs.makeWrapper ];
 
     doCheck = false;
+
+    postBuild = ''
+      target=$(rustc -vV | sed -n 's|host: ||p')
+      cp -r ../specs specs-build
+      chmod -R +w specs-build
+      ./target/"$target"/release/slacomp -a specs-build
+    '';
+
+    installPhase = ''
+      runHook preInstall
+
+      target=$(rustc -vV | sed -n 's|host: ||p')
+      local releaseDir="target/$target/release"
+
+      mkdir -p $out/bin $out/share/kuna/specs
+      cp "$releaseDir"/kuna $out/bin/
+      cp "$releaseDir"/decomp_dbg $out/bin/
+      cp "$releaseDir"/decomp_test_dbg $out/bin/
+      cp "$releaseDir"/slacomp $out/bin/
+      cp -r specs-build/. $out/share/kuna/specs/
+
+      runHook postInstall
+    '';
+
+    postFixup = ''
+      wrapProgram $out/bin/kuna --set KUNA_SPECS "$out/share/kuna/specs"
+    '';
 
     meta.mainProgram = "kuna";
   };
