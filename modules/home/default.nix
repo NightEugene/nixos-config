@@ -168,6 +168,7 @@ in
       expect
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default
       kuna
+      ghidra
     ];
   };
 }
