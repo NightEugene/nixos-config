@@ -35,5 +35,23 @@
   # power management
   powerManagement.enable = true;
   powerManagement.powertop.enable = true;
-  services.auto-cpufreq.enable = true;
+  services.auto-cpufreq = {
+    enable = true;
+    settings = {
+      battery = {
+        governor = "powersave";
+        scaling_min_freq = 400000;
+        scaling_max_freq = 1200000;
+        turbo = "never";
+        energy_performance_preference = "power";
+      };
+      charger = {
+        governor = "performance";
+        scaling_min_freq = 400000;
+        scaling_max_freq = 1800000;
+        turbo = "auto";
+        energy_performance_preference = "balance_performance";
+      };
+    };
+  };
 }
