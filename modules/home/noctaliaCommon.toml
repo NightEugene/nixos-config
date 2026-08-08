@@ -44,6 +44,9 @@ enable_daemon = true
 position = "top_right"
 background_opacity = 0.97
 
+[osd.kinds]
+keyboard_layout = false
+
 [bar.main]
 position = "top"
 thickness = 34
@@ -59,9 +62,9 @@ auto_hide = false
 reserve_space = true
 capsule = true
 
-start = ["launcher", "clock", "sysmon", "temp", "weather", "active_window"]
+start = ["launcher", "clock", "sysmon", "active_window", "media"]
 center = ["workspaces"]
-end = ["tray", "notifications", "volume", "network", "bluetooth", "keyboard_layout", "control-center"]
+end = @endWidgets@
 
 [widget.clock]
 format = "{:%H:%M}"
@@ -82,9 +85,28 @@ show_progress_ring = true
 
 [widget.keyboard_layout]
 display = "short"
-show_icon = true
+show_icon = false
 show_label = true
 hide_when_single_layout = false
+
+[widget.keyboard_layout.custom_labels]
+"English (US)" = "🇬🇧"
+"Russian" = "🇷🇺"
+
+[widget.battery]
+device = "auto"
+display_mode = "glyph"
+show_label = true
+hide_when_plugged = false
+hide_when_full = false
+
+[widget.bluetooth]
+show_label = false
+hide_when_no_connected_device = false
+
+[widget.network]
+show_label = false
+show_vpn_label = false
 
 [widget.workspaces]
 display = "name"
@@ -146,23 +168,23 @@ shortcut = "7"
 [lockscreen_widgets]
 enabled = false
 schema_version = 2
-widget_order = [ "lockscreen-login-box@HDMI-A-1" ]
+widget_order = [ "@lockscreenWidgetName@" ]
 
 [lockscreen_widgets.grid]
 cell_size = 16
 major_interval = 4
 visible = true
 
-[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1"]
+[lockscreen_widgets.widget."@lockscreenWidgetName@"]
 box_height = 70.0
 box_width = 400.0
-cx = 1280.0
-cy = 961.0
-output = "HDMI-A-1"
+cx = @lockscreenCx@
+cy = @lockscreenCy@
+output = "@lockscreenOutput@"
 rotation = 0.0
 type = "login_box"
 
-[lockscreen_widgets.widget."lockscreen-login-box@HDMI-A-1".settings]
+[lockscreen_widgets.widget."lockscreen-login-box@@lockscreenOutput@".settings]
 background_color = "surface_variant"
 background_opacity = 0.88
 background_radius = 12.0
