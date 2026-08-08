@@ -18,8 +18,13 @@ in
     enable = true;
     package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
     systemd.enable = true;
-    settings = pkgs.replaceVars ./noctaliaLaptop.toml {
+    settings = pkgs.replaceVars ./noctaliaCommon.toml {
       inherit wallpaperFile;
+      endWidgets = ''["tray", "notifications", "volume", "brightness", "network", "bluetooth", "keyboard_layout", "battery", "control-center"]'';
+      lockscreenWidgetName = "lockscreen-login-box@eDP-1";
+      lockscreenOutput = "eDP-1";
+      lockscreenCx = "768.0";
+      lockscreenCy = "432.0";
     };
   };
 
