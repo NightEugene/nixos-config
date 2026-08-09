@@ -52,6 +52,8 @@
 
     kuna.url = "github:Noelo-Lab/kuna";
     kuna.flake = false;
+
+    hermes-agent.url = "github:NousResearch/hermes-agent";
   };
 
   outputs =
