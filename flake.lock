@@ -7,11 +7,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785342977,
-        "narHash": "sha256-synKEpdwrd8eO+rwDtCj89oRvjWjPhuoYtQpUfHS2dA=",
+        "lastModified": 1789159144,
+        "narHash": "sha256-Hz8rUEzNiu41hABkfKfI2hsjJD/6LEwvSNzjFgp2c8Y=",
         "owner": "NightEugene",
         "repo": "aurora-sdk-nix",
-        "rev": "b50e7856b21e0b6006f645268be65646f706e932",
+        "rev": "e46916c925e488f1564cd27cfb4a37808f56473c",
         "type": "github"
       },
       "original": {
