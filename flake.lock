@@ -181,11 +181,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1788195614,
-        "narHash": "sha256-RAs3XTuzmGsyE9nKDUwxRagcXuzTbW2B17hULuoI/OA=",
+        "lastModified": 1789902266,
+        "narHash": "sha256-Nu4AnJcZxSAMP5l5a4zia1lBBc7+tsVPA737g6hqsjQ=",
         "owner": "MoonshotAI",
         "repo": "kimi-code",
-        "rev": "630a11db51ab0ac422cae6a10580b62c1ae8e05f",
+        "rev": "65ae3e368c7cfa096242cacc12eeeb661e682977",
         "type": "github"
       },
       "original": {
