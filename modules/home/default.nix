@@ -162,13 +162,12 @@ in
       qbittorrent
       vlc
       bibata-cursors
-      python3
+      (python3.withPackages (ps: [ ps.pillow ]))
       git-repo
       rpm
       expect
       gh
       pngquant
-      python3Packages.pillow
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default
       kuna
       ghidra
