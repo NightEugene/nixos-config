@@ -168,6 +168,7 @@ in
       expect
       gh
       pngquant
+      wl-screenrec
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default
       kuna
       ghidra
