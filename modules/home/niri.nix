@@ -173,7 +173,7 @@ in
         "Mod+Shift+Ctrl+T".action.toggle-debug-tint = [ ];
 
         # Toggle screen recording: start → stop (Mod+Shift+R)
-        "Mod+Shift+R".action.spawn-sh = "sh -c 'if pkill -0 -x wl-screenrec 2>/dev/null; then pkill -INT -x wl-screenrec; else mkdir -p $HOME/Videos/recordings && nohup wl-screenrec -f $HOME/Videos/recordings/rec_$(date +%Y%m%d_%H%M%S).mp4 >/dev/null 2>&1 & fi'";
+        "Mod+Shift+R".action.spawn-sh = "sh -c 'if pkill -0 -x gpu-screen-recorder 2>/dev/null; then pkill -INT -x gpu-screen-recorder; else mkdir -p $HOME/Videos/recordings && nohup gpu-screen-recorder -w screen -o $HOME/Videos/recordings/rec_$(date +%Y%m%d_%H%M%S).mp4 >/dev/null 2>&1 & fi'";
       };
     };
   };
