@@ -174,6 +174,8 @@ in
       ghidra
       md-tui
       inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default
+      jmtpfs
+      android-tools
     ];
   };
 }
