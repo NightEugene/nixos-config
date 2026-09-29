@@ -21,7 +21,9 @@
 
 ### Validation for other hosts
 
-- After any change, also verify that `pc` and `qemu` still build:
+- Do NOT verify `pc` and `qemu` builds on every change — this takes too long.
+- Only check them when the user explicitly asks, or when a change is likely to affect those hosts (e.g. changes in `modules/nixos/`, shared home config used by all hosts).
+- When needed:
 
   ```sh
   nix build .#nixosConfigurations.pc.config.system.build.toplevel .#nixosConfigurations.qemu.config.system.build.toplevel --no-link
