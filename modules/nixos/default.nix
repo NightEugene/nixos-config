@@ -90,4 +90,7 @@
 
   # Автомонтирование MTP/телефонов в файловых менеджерах.
   services.gvfs.enable = true;
+
+  # fusermount нужен jmtpfs (собран против fuse2).
+  environment.systemPackages = with pkgs; [ fuse ];
 }
