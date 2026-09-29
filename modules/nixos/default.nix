@@ -87,4 +87,7 @@
   };
 
   programs.dconf.enable = true;
+
+  # Автомонтирование MTP/телефонов в файловых менеджерах.
+  services.gvfs.enable = true;
 }
