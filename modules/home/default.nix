@@ -177,6 +177,7 @@ in
       jmtpfs
       android-tools
       unzip
+      codex
     ];
   };
 }
