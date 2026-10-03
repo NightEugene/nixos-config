@@ -64,6 +64,7 @@ in
     inputs.aurora-sdk.homeModules.default
     ./tg-ws-proxy.nix
     ./vim.nix
+    ./vscode.nix
     ./options.nix
     ./rutracker-proxy.nix
     ./dotfiles.nix
@@ -177,7 +178,6 @@ in
       jmtpfs
       android-tools
       unzip
-      vscode
       (import ./codex.nix { inherit pkgs; })
     ];
   };
