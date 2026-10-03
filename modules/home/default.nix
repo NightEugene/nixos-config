@@ -177,7 +177,7 @@ in
       jmtpfs
       android-tools
       unzip
-      codex
+      (import ./codex.nix { inherit pkgs; })
     ];
   };
 }
