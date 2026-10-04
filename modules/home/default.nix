@@ -157,7 +157,7 @@ in
       opencode
       clang
       telegram-desktop
-      (import ./telegram-cli.nix { inherit pkgs; })
+      (import ./gotd-cli.nix { inherit pkgs; })
       mattermost-desktop
       eog
       wayland-utils
