@@ -157,6 +157,7 @@ in
       opencode
       clang
       telegram-desktop
+      tg
       mattermost-desktop
       eog
       wayland-utils
