@@ -5,11 +5,11 @@ let
 
   max-unwrapped = pkgs.stdenvNoCC.mkDerivation {
     pname = "max-unwrapped";
-    version = "26.21.0.73284";
+    version = "26.34.0.79863";
 
     src = pkgs.fetchurl {
-      url = "https://download.max.ru/linux/deb/pool/main/m/max/MAX-26.21.0.73284.deb";
-      sha256 = "1fcfbf4e312b4e9bdcfa099ba48de9880543d08334bc7e69be10036b36134952";
+      url = "https://download.max.ru/linux/deb/pool/main/m/max/MAX-26.34.0.79863.deb";
+      sha256 = "5514c9505d7025e26c4f085bb8b6cc7f2539c05242e4e04b41967d373a5d6663";
     };
 
     nativeBuildInputs = [ pkgs.dpkg ];
