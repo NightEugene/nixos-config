@@ -157,6 +157,7 @@ in
       opencode
       clang
       telegram-desktop
+      steamguard-cli
       (import ./gotd-cli.nix { inherit pkgs; })
       mattermost-desktop
       eog
