@@ -180,6 +180,7 @@ in
       jmtpfs
       android-tools
       unzip
+      pmbootstrap
       (import ./codex.nix { inherit pkgs; })
     ];
   };
