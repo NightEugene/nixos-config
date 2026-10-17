@@ -183,6 +183,7 @@ in
       pmbootstrap
       (import ./codex.nix { inherit pkgs; })
       (import ./yt-dlp.nix { inherit pkgs; })
+      ffmpeg
     ];
   };
 }
