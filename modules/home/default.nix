@@ -182,6 +182,7 @@ in
       unzip
       pmbootstrap
       (import ./codex.nix { inherit pkgs; })
+      yt-dlp
     ];
   };
 }
