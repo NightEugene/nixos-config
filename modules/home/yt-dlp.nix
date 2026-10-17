@@ -1,5 +1,10 @@
 { pkgs }:
 
+let
+  # secretstorage нужен yt-dlp для расшифровки v11-cookies chromium-браузеров
+  # через gnome-keyring (иначе сессионные куки не читаются).
+  pythonEnv = pkgs.python3.withPackages (ps: [ ps.secretstorage ]);
+in
 pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "yt-dlp";
   version = "2026.08.19";
@@ -16,7 +21,9 @@ pkgs.stdenvNoCC.mkDerivation (finalAttrs: {
   installPhase = ''
     runHook preInstall
     install -Dm755 $src $out/bin/yt-dlp
-    wrapProgram $out/bin/yt-dlp --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.python3 ]}
+    wrapProgram $out/bin/yt-dlp \
+      --prefix PATH : ${pkgs.lib.makeBinPath [ pkgs.python3 ]} \
+      --prefix PYTHONPATH : ${pythonEnv}/${pythonEnv.python.sitePackages}
     runHook postInstall
   '';
 
