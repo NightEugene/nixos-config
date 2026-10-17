@@ -6,7 +6,7 @@
       force = true;
       text = ''
         [user]
-        	email = e.todoruk@omp.ru
+        	email = nighteugene@ya.ru
         	name = Eugene Todoruk
         [core]
         	editor = nvim

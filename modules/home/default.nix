@@ -185,6 +185,7 @@ in
       (import ./yt-dlp.nix { inherit pkgs; })
       ffmpeg
       deno # JS-runtime для yt-dlp (PO token provider)
+      mpv
     ];
   };
 }
