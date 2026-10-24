@@ -120,11 +120,11 @@
     "happ-nixos": {
       "flake": false,
       "locked": {
-        "lastModified": 1782859482,
-        "narHash": "sha256-Mmc7E3qFgCpVRWocs9yFlpSdRK/c5XPENJ51E+f+pac=",
+        "lastModified": 1788995438,
+        "narHash": "sha256-DrYqbY4h0ftmWbiC2uouXcpN18D61WAp4K2cPSmgxhs=",
         "owner": "MrShitFox",
         "repo": "happ-nixos",
-        "rev": "42fbaedab18654a237c11104ec4fd1de4810f63f",
+        "rev": "e9a06becb9c7e34fdde6f982db22786d177afe8f",
         "type": "github"
       },
       "original": {
