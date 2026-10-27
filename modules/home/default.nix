@@ -101,6 +101,13 @@ in
     style.name = "adwaita-dark";
   };
 
+  # Qt4-приложения (SP Flash Tool 5) не читают QT_* env — стиль задаём
+  # через глобальный конфиг Qt4: GTK+ style рендерится темой GTK2 (Adwaita-dark)
+  home.file.".config/Trolltech.conf".text = ''
+    [Qt]
+    style=GTK+
+  '';
+
   home.pointerCursor = {
     enable = true;
     name = "Bibata-Modern-Classic";
@@ -172,6 +179,8 @@ in
       gh
       pngquant
       gpu-screen-recorder
+      # libgtk-x11-2.0 для QGtkStyle (Qt4, SP Flash Tool 5) — резолвится через dlopen
+      gtk2
       inputs.kimi-code.packages.${pkgs.stdenv.hostPlatform.system}.default
       kuna
       ghidra

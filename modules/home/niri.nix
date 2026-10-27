@@ -91,6 +91,10 @@ in
         GTK_THEME = "Adwaita:dark";
         QT_QPA_PLATFORMTHEME = "gtk3";
         QT_STYLE_OVERRIDE = "Adwaita-Dark";
+        # QGtkStyle (Qt4) резолвит libgtk-x11-2.0 и движки тем через dlopen —
+        # без ld.so.cache на NixOS нужен путь к профилю
+        LD_LIBRARY_PATH = "/run/opengl-driver/lib:/etc/profiles/per-user/nighteugene/lib";
+        GTK_PATH = "/etc/profiles/per-user/nighteugene/lib";
       };
 
       spawn-at-startup = [
