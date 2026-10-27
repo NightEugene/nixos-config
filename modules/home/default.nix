@@ -6,6 +6,31 @@
 }:
 
 let
+  # xwayland-satellite 0.8.3 с тёмными декорациями X11-окон (патч decoration.rs:
+  # белый тайтл-бар #353535, как на рабочей Ubuntu-машине)
+  satelliteSrc = pkgs.fetchFromGitHub {
+    owner = "Supreeeme";
+    repo = "xwayland-satellite";
+    rev = "v0.8.3";
+    hash = "sha256-eFEjCCniMCKeWU0PcZNv+tDYe08SLFPjRplyPY8OFt4=";
+  };
+
+  xwayland-satellite = pkgs.xwayland-satellite.overrideAttrs (old: {
+    version = "0.8.3";
+    src = satelliteSrc;
+    cargoHash = "sha256-gMGFvnbxM3hD5fmkSimaFd87GEf6BXFe/MGjoS6VNVU=";
+    # overrideAttrs не пересчитывает cargoDeps — задаём вендор явно
+    cargoDeps = pkgs.rustPlatform.fetchCargoVendor {
+      pname = "xwayland-satellite";
+      version = "0.8.3";
+      src = satelliteSrc;
+      hash = "sha256-gMGFvnbxM3hD5fmkSimaFd87GEf6BXFe/MGjoS6VNVU=";
+    };
+    postPatch = (old.postPatch or "") + ''
+      cp ${./xwayland-satellite-decoration.rs} src/server/decoration.rs
+    '';
+  });
+
   kuna = pkgs.rustPlatform.buildRustPackage {
     pname = "kuna";
     version = "0.1.0";
@@ -69,6 +94,7 @@ in
     ./rutracker-proxy.nix
     ./dotfiles.nix
     ./osc.nix
+    ./spflashtool.nix
   ];
 
   programs.aurora-sdk.enable = true;
