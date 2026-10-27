@@ -70,10 +70,6 @@ end = @endWidgets@
 format = "{:%H:%M}"
 tooltip_format = "{:%A, %B %d, %Y}"
 
-[widget.gpu-vram]
-type = "sysmon"
-stat = "gpu_vram"
-
 [widget.active_window]
 max_length = 145
 min_length = 80
@@ -198,3 +194,7 @@ show_caps_lock = true
 show_keyboard_layout = true
 show_login_button = true
 show_password_hint = true
+
+# GPU-метрики выключены по умолчанию (gpu_poll_seconds = 0) — включаем опрос NVML
+[system.monitor]
+gpu_poll_seconds = 5.0
