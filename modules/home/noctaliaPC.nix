@@ -24,6 +24,10 @@ in
     };
   };
 
+  # NVML (метрики GPU) подгружается через dlopen и не находится без
+  # ld.so.cache на NixOS — подкладываем драйверный каталог сервису
+  systemd.user.services.noctalia.Service.Environment = [ "LD_LIBRARY_PATH=/run/opengl-driver/lib" ];
+
   # Noctalia хранит runtime-настройки в ~/.local/state/noctalia/settings.toml
   # и применяет их поверх config.toml. Чтобы обои из конфига действительно
   # подхватились, прописываем путь к обоям и в state-файл.
