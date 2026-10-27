@@ -20,6 +20,7 @@ in
     systemd.enable = true;
     settings = pkgs.replaceVars ./noctaliaCommon.toml {
       inherit wallpaperFile;
+      gpuWidgets = "";
       endWidgets = ''["tray", "notifications", "volume", "brightness", "network", "bluetooth", "keyboard_layout", "battery", "control-center"]'';
       lockscreenWidgetName = "lockscreen-login-box@eDP-1";
       lockscreenOutput = "eDP-1";
