@@ -2,6 +2,7 @@
   inputs,
   flake,
   lib,
+  pkgs,
   ...
 }:
 
@@ -34,4 +35,10 @@
   services.auto-cpufreq.enable = lib.mkForce false;
   services.upower.enable = lib.mkForce false;
   services.thermald.enable = lib.mkForce false;
+
+  # Ollama: локальный запуск LLM, ускорение на GPU NVIDIA (CUDA)
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-cuda;
+  };
 }
