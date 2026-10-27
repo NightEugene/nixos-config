@@ -39,5 +39,7 @@ in
         -e '/^\[wallpaper\.last\]$/,/^\[/ s|^path = ".*"|path = "${wallpaperFile}"|' \
         "$stateFile"
     fi
+    # Live-перечитывание settings.toml ломает сервис мониторинга — перезапускаем
+    ${pkgs.systemd}/bin/systemctl --user restart noctalia 2>/dev/null || true
   '';
 }
