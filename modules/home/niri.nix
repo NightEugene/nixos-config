@@ -67,6 +67,12 @@ in
           matches = [ { app-id = "^max$"; } ];
           open-on-workspace = "msg";
         }
+        {
+          matches = [
+            { app-id = "^(Flash_tool|spflashtool[56]|MediaTek Smart Phone Flash Tool V6.*)$"; }
+          ];
+          open-floating = true;
+        }
       ];
 
       input = {
