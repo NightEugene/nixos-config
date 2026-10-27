@@ -15,7 +15,7 @@ in
     settings = pkgs.replaceVars ./noctaliaCommon.toml {
       inherit wallpaperFile;
       # GPU-виджеты есть только на PC (NVIDIA); на laptop стат был бы "недоступен"
-      gpuWidgets = ", \"gpu-usage\", \"gpu-vram\"";
+      gpuWidgets = ", \"gpu-vram\"";
       endWidgets = ''["tray", "notifications", "volume", "network", "bluetooth", "keyboard_layout", "control-center"]'';
       lockscreenWidgetName = "lockscreen-login-box@HDMI-A-1";
       lockscreenOutput = "HDMI-A-1";

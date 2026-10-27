@@ -70,10 +70,6 @@ end = @endWidgets@
 format = "{:%H:%M}"
 tooltip_format = "{:%A, %B %d, %Y}"
 
-[widget.gpu-usage]
-type = "sysmon"
-stat = "gpu_usage"
-
 [widget.gpu-vram]
 type = "sysmon"
 stat = "gpu_vram"
