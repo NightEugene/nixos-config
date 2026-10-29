@@ -220,6 +220,7 @@ in
       (import ./pi.nix { inherit pkgs; })
       (import ./yt-dlp.nix { inherit pkgs; })
       ffmpeg
+      imagemagick
       deno # JS-runtime для yt-dlp (PO token provider)
       mpv
     ];
