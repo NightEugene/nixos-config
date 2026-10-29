@@ -1,6 +1,7 @@
 {
   inputs,
   flake,
+  lib,
   ...
 }:
 
@@ -13,6 +14,10 @@
     ./disk-config.nix
     ./hardware-configuration.nix
   ];
+
+  # ThinkPad: fan/thermal management is handled by EC + DYTC,
+  # thermald refuses to run on this platform.
+  services.thermald.enable = lib.mkForce false;
 
   # USB pairing and communication with iPhone/iPad.
   services.usbmuxd.enable = true;
