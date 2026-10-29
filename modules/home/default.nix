@@ -198,7 +198,7 @@ in
       qbittorrent
       vlc
       bibata-cursors
-      (python3.withPackages (ps: [ ps.pillow ]))
+      (python3.withPackages (ps: [ ps.pillow ps.pyyaml ]))
       git-repo
       rpm
       expect
