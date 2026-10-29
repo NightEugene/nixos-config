@@ -217,6 +217,7 @@ in
       unzip
       pmbootstrap
       (import ./codex.nix { inherit pkgs; })
+      (import ./pi.nix { inherit pkgs; })
       (import ./yt-dlp.nix { inherit pkgs; })
       ffmpeg
       deno # JS-runtime для yt-dlp (PO token provider)
