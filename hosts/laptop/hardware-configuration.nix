@@ -54,4 +54,8 @@
       };
     };
   };
+
+  # thermal monitoring (fan/thermal management is handled by ThinkPad EC + DYTC;
+  # thermald refuses to run on this platform)
+  environment.systemPackages = with pkgs; [ lm_sensors ];
 }
