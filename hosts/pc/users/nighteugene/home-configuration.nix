@@ -1,4 +1,4 @@
-{ flake, lib, ... }:
+{ flake, lib, pkgs, ... }:
 
 {
   imports = [
@@ -10,5 +10,9 @@
   home.pointerCursor.size = lib.mkForce 16;
 
   # Десктоп pc: сюда можно добавить пакеты, специфичные для стационарного ПК.
-  # Пример: home.packages = with pkgs; [ steam ];
+  home.packages = with pkgs; [
+    # Лаунчер игр; Blizzard Battle.net ставится из его каталога
+    # (поиск "Battle.net" → Install, использует свой Wine-GE)
+    lutris
+  ];
 }
