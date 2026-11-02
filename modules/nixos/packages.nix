@@ -11,5 +11,7 @@
     gdb
     gnumake
     openvpn
+    slurp
+    wf-recorder
   ];
 }
