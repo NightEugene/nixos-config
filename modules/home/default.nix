@@ -221,6 +221,7 @@ in
       (import ./yt-dlp.nix { inherit pkgs; })
       ffmpeg
       imagemagick
+      openssl
       deno # JS-runtime для yt-dlp (PO token provider)
       mpv
     ];
