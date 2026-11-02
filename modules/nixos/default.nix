@@ -1,6 +1,5 @@
 {
   inputs,
-  lib,
   pkgs,
   ...
 }:
@@ -24,9 +23,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.backupFileExtension = "backup";
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    backupFileExtension = "backup";
+  };
 
   boot.tmp.useTmpfs = true;
 
@@ -65,12 +66,6 @@
     "/share/applications"
     "/share/xdg-desktop-portal"
   ];
-
-  # Proton не может создавать symlinks на NTFS (/mnt/games).
-  # Перенаправляем compatdata на ext4.
-  environment.sessionVariables = {
-    STEAM_COMPAT_DATA_PATH = "%h/.local/share/Steam/steamapps/compatdata";
-  };
 
   fonts = {
     packages = with pkgs; [

@@ -111,7 +111,10 @@ in
           Type = "simple";
           ExecStart = lib.escapeShellArgs (
             [ "${cfg.package}/bin/tg-ws-proxy" ]
-            ++ lib.optionals (cfg.secret != null) [ "--secret" cfg.secret ]
+            ++ lib.optionals (cfg.secret != null) [
+              "--secret"
+              cfg.secret
+            ]
             ++ cfg.extraArgs
           );
           Restart = "on-failure";

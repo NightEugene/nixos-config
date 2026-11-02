@@ -4,6 +4,7 @@
   nixConfig = {
     substituters = [
       "https://mirror.yandex.ru/nixos"
+      "https://cache.nixos.org"
     ];
 
     trusted-public-keys = [
@@ -54,6 +55,18 @@
     kuna.flake = false;
 
     hermes-agent.url = "github:NousResearch/hermes-agent";
+
+    # Внутренние пакеты SP Flash Tool; ревизии зафиксированы для воспроизводимости.
+    tz-auto.url = "git+ssh://git@os-git.omprussia.ru/trustzone/automation/flake.git?rev=6edc5df08e1d99fee7d308dd6761c8be3ba97626";
+
+    spflashtool5-src = {
+      url = "git+ssh://git@os-git.omprussia.ru/trustzone/automation/flash-utils.git?rev=99cbba660ebf57ecbc6c39bbb8df4dd0626c0780";
+      flake = false;
+    };
+    spflashtool6-src = {
+      url = "git+ssh://git@os-git.omprussia.ru/trustzone/automation/flash-utils.git?rev=6b691be4f2a43b7313feb38d19182740c620ed31";
+      flake = false;
+    };
   };
 
   outputs =
@@ -97,6 +110,7 @@
           checks = {
             pc = self.nixosConfigurations.pc.config.system.build.toplevel;
             laptop = self.nixosConfigurations.laptop.config.system.build.toplevel;
+            qemu = self.nixosConfigurations.qemu.config.system.build.toplevel;
           };
         };
 
@@ -144,31 +158,6 @@
             qemu = mkHost "qemu" [ ./hosts/qemu/configuration.nix ];
           };
 
-        packages.qcow = inputs.nixos-generators.nixosGenerate {
-          system = "x86_64-linux";
-          format = "qcow";
-          specialArgs = {
-            inherit inputs;
-            flake = self;
-          };
-          modules = [
-            inputs.disko.nixosModules.disko
-            inputs.home-manager.nixosModules.home-manager
-            self.nixosModules.default
-            {
-              networking.hostName = "qemu";
-
-              home-manager = {
-                extraSpecialArgs = {
-                  inherit inputs;
-                  flake = self;
-                };
-                users.nighteugene = import ./hosts/qemu/users/nighteugene/home-configuration.nix;
-              };
-            }
-            ./hosts/qemu/configuration.nix
-          ];
-        };
       };
     };
 }

@@ -28,28 +28,42 @@ let
     dontStrip = true;
   };
 
-  ffmpeg-plugin-browser = pkgs.runCommand "ffmpeg-plugin-browser" { } ''
-    mkdir -p $out/lib/ffmpeg-plugin-browser
-    install -Dm755 ${./yandex-browser-libffmpeg.so} $out/lib/ffmpeg-plugin-browser/libffmpeg.so
-  '';
+  # Актуальные проприетарные кодеки Chromium. Пакет vivaldi-ffmpeg-codecs
+  # в nixpkgs слишком старый для текущего Yandex Browser, а nwjs несовместим по ABI.
+  ffmpeg-plugin-browser =
+    let
+      src = pkgs.fetchurl {
+        # В текущей сети HTTPS Snapcraft недоступен; содержимое закреплено хэшем.
+        url = "http://api.snapcraft.io/api/v1/snaps/download/XXzVIXswXKHqlUATPqGCj2w2l7BxosS8_118.snap";
+        hash = "sha256-NYSbCLPCr2oxrVUokEC8g1BiZfIcQLaNKeMBkMNCsaI=";
+      };
+    in
+    pkgs.runCommand "ffmpeg-plugin-browser" { nativeBuildInputs = [ pkgs.squashfsTools ]; } ''
+      unsquashfs -dest . ${src} >/dev/null
+      mkdir -p $out/lib/ffmpeg-plugin-browser
+      install -Dm755 chromium-ffmpeg-git-2026-01-28/chromium-ffmpeg/libffmpeg.so \
+        $out/lib/ffmpeg-plugin-browser/libffmpeg.so
+    '';
 
   yandex-browser = pkgs.buildFHSEnv {
     name = "yandex-browser";
 
-    targetPkgs = pkgs: [
-      yandex-browser-unwrapped
-      ffmpeg-plugin-browser
-    ]
-    ++ fhsCommon
-    ++ (with pkgs; [
-      ffmpeg
-      gst_all_1.gstreamer
-      gst_all_1.gst-plugins-base
-      gst_all_1.gst-plugins-good
-      gst_all_1.gst-plugins-bad
-      gst_all_1.gst-plugins-ugly
-      gst_all_1.gst-libav
-    ]);
+    targetPkgs =
+      pkgs:
+      [
+        yandex-browser-unwrapped
+        ffmpeg-plugin-browser
+      ]
+      ++ fhsCommon
+      ++ (with pkgs; [
+        ffmpeg
+        gst_all_1.gstreamer
+        gst_all_1.gst-plugins-base
+        gst_all_1.gst-plugins-good
+        gst_all_1.gst-plugins-bad
+        gst_all_1.gst-plugins-ugly
+        gst_all_1.gst-libav
+      ]);
 
     runScript = "${yandex-browser-unwrapped}/browser/yandex-browser";
 

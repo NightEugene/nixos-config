@@ -22,9 +22,11 @@
   };
 
   # QEMU: нет нужды в мобильных сервисах и NVIDIA.
-  services.auto-cpufreq.enable = lib.mkForce false;
-  services.upower.enable = lib.mkForce false;
-  services.thermald.enable = lib.mkForce false;
+  services = {
+    auto-cpufreq.enable = lib.mkForce false;
+    upower.enable = lib.mkForce false;
+    thermald.enable = lib.mkForce false;
+  };
 
   # Для QEMU не нужна кастомная тема GRUB с высоким разрешением.
   boot.loader.grub.gfxmodeBios = lib.mkForce "1024x768";

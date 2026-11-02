@@ -1,23 +1,23 @@
-{ ... }:
+_:
 
 {
   programs.alacritty = {
     enable = true;
 
-    settings = {
-      font.normal = {
+    settings.font = {
+      normal = {
         family = "JetBrainsMono Nerd Font Mono";
         style = "Regular";
       };
-      font.bold = {
+      bold = {
         family = "JetBrainsMono Nerd Font Mono";
         style = "Bold";
       };
-      font.bold_italic = {
+      bold_italic = {
         family = "JetBrainsMono Nerd Font Mono";
         style = "Bold Italic";
       };
-      font.italic = {
+      italic = {
         family = "JetBrainsMono Nerd Font Mono";
         style = "Italic";
       };

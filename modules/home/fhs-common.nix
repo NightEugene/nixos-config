@@ -1,6 +1,7 @@
 { pkgs }:
 
-with pkgs; [
+with pkgs;
+[
   glibc
   libgcc
   gcc.cc.lib

@@ -91,10 +91,6 @@ in
         GTK_THEME = "Adwaita:dark";
         QT_QPA_PLATFORMTHEME = "gtk3";
         QT_STYLE_OVERRIDE = "Adwaita-Dark";
-        # QGtkStyle (Qt4) резолвит libgtk-x11-2.0 и движки тем через dlopen —
-        # без ld.so.cache на NixOS нужен путь к профилю
-        LD_LIBRARY_PATH = "/run/opengl-driver/lib:/etc/profiles/per-user/nighteugene/lib";
-        GTK_PATH = "/etc/profiles/per-user/nighteugene/lib";
       };
 
       spawn-at-startup = [
@@ -190,7 +186,8 @@ in
 
         # Toggle screen recording: start → stop (Mod+Shift+R)
         # NB: pkill matches comm, which is truncated to 15 chars (gpu-screen-reco)
-        "Mod+Shift+R".action.spawn-sh = "sh -c 'if pkill -0 -x gpu-screen-reco 2>/dev/null; then pkill -INT -x gpu-screen-reco; else mkdir -p $HOME/Videos/recordings && nohup gpu-screen-recorder -w screen -o $HOME/Videos/recordings/rec_$(date +%Y%m%d_%H%M%S).mp4 >/dev/null 2>&1 & fi'";
+        "Mod+Shift+R".action.spawn-sh =
+          "sh -c 'if pkill -0 -x gpu-screen-reco 2>/dev/null; then pkill -INT -x gpu-screen-reco; else mkdir -p $HOME/Videos/recordings && nohup gpu-screen-recorder -w screen -o $HOME/Videos/recordings/rec_$(date +%Y%m%d_%H%M%S).mp4 >/dev/null 2>&1 & fi'";
       };
     };
   };

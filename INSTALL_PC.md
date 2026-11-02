@@ -102,6 +102,8 @@ sudo git clone https://github.com/NightEugene/nixos-config.git .
 sudo git checkout master
 ```
 
+Для загрузки закреплённых пакетов SP Flash Tool flake также обращается к приватным репозиториям `trustzone/automation/flake` и `trustzone/automation/flash-utils` на `os-git.omprussia.ru`. Перед установкой настройте SSH-доступ к ним для root (ключ и запись в `known_hosts`), иначе `nixos-install` не сможет получить все inputs.
+
 ## Обновление UUID в конфигурации
 
 После форматирования `nvme0n1p4` его UUID изменился. Получить новые UUID:
@@ -130,7 +132,11 @@ cd /mnt/etc/nixos
 sudo nixos-install --flake .#pc --no-channel-copy
 ```
 
-Пароль root будет запрошен в процессе установки.
+Пароль root будет запрошен в процессе установки. Пароль пользователя `nighteugene` установщик не запрашивает, поэтому задайте его отдельно до перезагрузки — иначе вход через greeter и `sudo` будут невозможны:
+
+```bash
+sudo nixos-enter --root /mnt -c 'passwd nighteugene'
+```
 
 ## Настройка загрузчика
 
@@ -159,7 +165,7 @@ reboot
 При первой загрузке:
 
 1. В меню GRUB выбрать NixOS.
-2. Войти как пользователь `nighteugene` (пароль, заданный при установке).
+2. Войти как пользователь `nighteugene` с паролем, заданным через `nixos-enter`.
 
 ## Применение конфигурации после установки
 

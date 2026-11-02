@@ -1,21 +1,29 @@
-{ config, lib, pkgs, modulesPath, ... }:
+{
+  lib,
+  modulesPath,
+  ...
+}:
 
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
   ];
 
-  boot.initrd.availableKernelModules = [
-    "ahci"
-    "xhci_pci"
-    "virtio_pci"
-    "virtio_scsi"
-    "sd_mod"
-    "sr_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    initrd = {
+      availableKernelModules = [
+        "ahci"
+        "xhci_pci"
+        "virtio_pci"
+        "virtio_scsi"
+        "sd_mod"
+        "sr_mod"
+      ];
+      kernelModules = [ ];
+    };
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
+  };
 
   fileSystems."/" = {
     device = lib.mkForce "/dev/disk/by-label/nixos";
@@ -34,5 +42,8 @@
 
   # QEMU: virtio-gpu для графики, без NVIDIA.
   hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "modesetting" "fbdev" ];
+  services.xserver.videoDrivers = [
+    "modesetting"
+    "fbdev"
+  ];
 }

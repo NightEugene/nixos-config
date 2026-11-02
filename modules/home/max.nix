@@ -32,17 +32,19 @@ let
   max = pkgs.buildFHSEnv {
     name = "max";
 
-    targetPkgs = pkgs: [
-      max-unwrapped
-    ]
-    ++ fhsCommon
-    ++ (with pkgs; [
-      qt6.qtbase
-      qt6.qtdeclarative
-      qt6.qtwebengine
-      qt6.qtmultimedia
-      qt6.qtwayland
-    ]);
+    targetPkgs =
+      pkgs:
+      [
+        max-unwrapped
+      ]
+      ++ fhsCommon
+      ++ (with pkgs; [
+        qt6.qtbase
+        qt6.qtdeclarative
+        qt6.qtwebengine
+        qt6.qtmultimedia
+        qt6.qtwayland
+      ]);
 
     runScript = "${max-unwrapped}/bin/max";
 

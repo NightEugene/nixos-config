@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
 
 let
   # Тёмная тема SP Flash Tool 5/6. Парсер аргументов вендора отвергает
@@ -8,12 +13,26 @@ let
     gcc -shared -fPIC -O2 -o $out ${./spflashtool/theme.c} -ldl
   '';
 
-  wrapper = tool: pkgs.writeShellScript "spflashtool${tool}" ''
-    unset QT_STYLE_OVERRIDE QT_QPA_PLATFORMTHEME
-    export SPFLASH_DARK_QSS="${config.home.homeDirectory}/.config/spflashtool/dark.qss"
-    export LD_PRELOAD="${themeSo}''${LD_PRELOAD:+:$LD_PRELOAD}"
-    exec "${config.home.homeDirectory}/.nix-profile/bin/spflashtool${tool}" "$@"
-  '';
+  spflashPackages = inputs.tz-auto.packages.${pkgs.stdenv.hostPlatform.system};
+  # Подменяем встроенный fetchGit на flake-input: источники попадают в lock
+  # и не требуют SSH-доступа root во время nixos-rebuild.
+  toolPackage =
+    tool:
+    (builtins.getAttr "spflashtool${tool}" spflashPackages).overrideAttrs (_: {
+      src = inputs."spflashtool${tool}-src";
+    });
+
+  wrapper =
+    tool:
+    pkgs.writeShellScript "spflashtool${tool}" ''
+      unset QT_STYLE_OVERRIDE QT_QPA_PLATFORMTHEME
+      export SPFLASH_DARK_QSS="${config.home.homeDirectory}/.config/spflashtool/dark.qss"
+      # QGtkStyle (Qt4) загружает GTK2 и движки тем через dlopen.
+      export LD_LIBRARY_PATH="/run/opengl-driver/lib:/etc/profiles/per-user/nighteugene/lib''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+      export GTK_PATH="/etc/profiles/per-user/nighteugene/lib"
+      export LD_PRELOAD="${themeSo}''${LD_PRELOAD:+:$LD_PRELOAD}"
+      exec "${toolPackage tool}/bin/spflashtool${tool}" "$@"
+    '';
 in
 {
   home.file = {

@@ -1,5 +1,4 @@
 {
-  inputs,
   flake,
   lib,
   pkgs,
@@ -31,14 +30,16 @@
   boot.resumeDevice = "/dev/disk/by-uuid/226cb0fc-f708-48f8-9863-af90490fe02f";
   boot.kernelParams = [ "resume_offset=349257728" ];
 
-  # Десктоп: нет нужды в мобильных сервисах вроде upower/auto-cpufreq.
-  services.auto-cpufreq.enable = lib.mkForce false;
-  services.upower.enable = lib.mkForce false;
-  services.thermald.enable = lib.mkForce false;
+  services = {
+    # Десктоп: нет нужды в мобильных сервисах вроде upower/auto-cpufreq.
+    auto-cpufreq.enable = lib.mkForce false;
+    upower.enable = lib.mkForce false;
+    thermald.enable = lib.mkForce false;
 
-  # Ollama: локальный запуск LLM, ускорение на GPU NVIDIA (CUDA)
-  services.ollama = {
-    enable = true;
-    package = pkgs.ollama-cuda;
+    # Ollama: локальный запуск LLM, ускорение на GPU NVIDIA (CUDA)
+    ollama = {
+      enable = true;
+      package = pkgs.ollama-cuda;
+    };
   };
 }

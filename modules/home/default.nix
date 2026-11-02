@@ -90,8 +90,6 @@ in
     ./tg-ws-proxy.nix
     ./vim.nix
     ./vscode.nix
-    ./options.nix
-    ./rutracker-proxy.nix
     ./dotfiles.nix
     ./osc.nix
     ./spflashtool.nix
@@ -127,20 +125,6 @@ in
     style.name = "adwaita-dark";
   };
 
-  # Qt4-приложения (SP Flash Tool 5) не читают QT_* env — стиль задаём
-  # через глобальный конфиг Qt4: GTK+ style рендерится темой GTK2 (Adwaita-dark)
-  home.file.".config/Trolltech.conf".text = ''
-    [Qt]
-    style=GTK+
-  '';
-
-  home.pointerCursor = {
-    enable = true;
-    name = "Bibata-Modern-Classic";
-    package = pkgs.bibata-cursors;
-    size = 24;
-  };
-
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
@@ -163,6 +147,20 @@ in
   };
 
   home = {
+    # Qt4-приложения (SP Flash Tool 5) не читают QT_* env — стиль задаём
+    # через глобальный конфиг Qt4: GTK+ style рендерится темой GTK2 (Adwaita-dark)
+    file.".config/Trolltech.conf".text = ''
+      [Qt]
+      style=GTK+
+    '';
+
+    pointerCursor = {
+      enable = true;
+      name = "Bibata-Modern-Classic";
+      package = pkgs.bibata-cursors;
+      size = 24;
+    };
+
     stateVersion = "25.11";
 
     # Proton не может создавать symlinks на NTFS (/mnt/games).
@@ -170,7 +168,7 @@ in
     sessionVariables = {
       STEAM_COMPAT_DATA_PATH = "${config.home.homeDirectory}/.local/share/Steam/steamapps/compatdata";
       XCURSOR_THEME = "Bibata-Modern-Classic";
-      XCURSOR_SIZE = "24";
+      XCURSOR_SIZE = toString config.home.pointerCursor.size;
     };
 
     sessionPath = [
@@ -198,7 +196,10 @@ in
       qbittorrent
       vlc
       bibata-cursors
-      (python3.withPackages (ps: [ ps.pillow ps.pyyaml ]))
+      (python3.withPackages (ps: [
+        ps.pillow
+        ps.pyyaml
+      ]))
       git-repo
       rpm
       expect
