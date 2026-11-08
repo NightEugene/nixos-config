@@ -80,6 +80,8 @@ in
         workspace-auto-back-and-forth = false;
 
         keyboard = {
+          track-layout = "window";
+
           xkb = {
             layout = "us,ru";
             options = "grp:caps_toggle";
