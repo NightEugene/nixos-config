@@ -38,5 +38,19 @@
     happ.enable = true;
   };
 
+  # Noctalia запускает systemctl hibernate из user service, который Polkit
+  # не считает активной локальной сессией. Разрешаем владельцу ПК гибернацию.
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (
+        subject.user == "nighteugene" &&
+        (action.id == "org.freedesktop.login1.hibernate" ||
+          action.id == "org.freedesktop.login1.hibernate-multiple-sessions")
+      ) {
+        return polkit.Result.YES;
+      }
+    });
+  '';
+
   security.rtkit.enable = true;
 }
